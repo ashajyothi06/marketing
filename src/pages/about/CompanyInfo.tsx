@@ -1,121 +1,277 @@
-import { Target, Eye, Heart, Award } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ArrowRight, Send } from 'lucide-react';
 import Layout from '@/components/layout/Layout';
-import CTASection from '@/components/shared/CTASection';
+
+// Import images
+import aboutFamily from '@/assets/about-family.jpg';
+import aboutOneness from '@/assets/about-oneness.jpg';
+import aboutSatisfaction from '@/assets/about-satisfaction.jpg';
+import aboutRevenue from '@/assets/about-revenue.jpg';
+import aboutNetwork from '@/assets/about-network.jpg';
+import aboutImprovement from '@/assets/about-improvement.jpg';
+import missionBg from '@/assets/about-mission-bg.jpg';
+import visionBg from '@/assets/about-vision-bg.jpg';
 
 const CompanyInfo = () => {
+  const aboutUsItems = [
+    { image: aboutFamily, text: 'Feeling of one-family under the same roof' },
+    { image: aboutOneness, text: 'Employees feel oneness in the company' },
+    { image: aboutSatisfaction, text: 'Client satisfaction is the key' },
+    { image: aboutRevenue, text: 'Assured revenue growth for everyone' },
+    { image: aboutNetwork, text: 'The GxPify network grows stronger' },
+    { image: aboutImprovement, text: 'Continuous improvement culture' },
+  ];
+
+  const numberedPoints = [
+    'Passion drives our work',
+    'Pace ensures timely delivery',
+    'Precision guarantees quality',
+    'Transparency builds trust',
+    'Innovation leads growth',
+    'Excellence defines us',
+  ];
+
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="hero-gradient min-h-[60vh] flex items-center relative overflow-hidden">
-        <div className="container-custom relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="animate-fade-up">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-6 leading-tight">
-                About <span className="text-accent">Digital Piloto</span>
-              </h1>
-              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                We are a team of passionate digital marketers, strategists, and creatives dedicated to helping businesses thrive in the digital landscape.
-              </p>
-            </div>
-            <div className="relative hidden lg:block">
-              <div className="bg-gradient-to-br from-accent/20 to-primary/20 rounded-3xl p-8">
-                <div className="bg-white rounded-2xl p-8 shadow-card">
-                  <div className="text-center">
-                    <div className="text-5xl font-bold text-accent mb-2">10+</div>
-                    <div className="text-primary font-semibold mb-4">Years of Excellence</div>
-                    <p className="text-muted-foreground text-sm">Delivering digital success stories since 2014</p>
+      {/* About Us Section - 6 Image Grid */}
+      <section className="section-padding bg-background">
+        <div className="container-custom">
+          <h2 className="text-3xl md:text-4xl font-bold text-primary text-center mb-12">
+            About Us
+          </h2>
+
+          {/* Main White Container with Lavender Border */}
+          <div className="bg-background border-2 border-purple-soft rounded-3xl p-8 md:p-12 shadow-lg">
+            {/* First Row - 3 Images */}
+            <div className="grid md:grid-cols-3 gap-6 mb-8">
+              {aboutUsItems.slice(0, 3).map((item, index) => (
+                <div key={index} className="text-center">
+                  <div className="bg-background rounded-xl shadow-md overflow-hidden mb-4 aspect-[4/3]">
+                    <img 
+                      src={item.image} 
+                      alt={item.text} 
+                      className="w-full h-full object-cover"
+                    />
                   </div>
+                  <p className="text-muted-foreground text-sm font-medium">{item.text}</p>
                 </div>
+              ))}
+            </div>
+
+            {/* Numbered Points Strip */}
+            <div className="flex flex-wrap justify-center gap-4 py-6 my-8 border-y border-border">
+              {numberedPoints.map((point, index) => (
+                <div 
+                  key={index} 
+                  className="flex items-center gap-2 bg-secondary/50 rounded-full px-4 py-2"
+                >
+                  <span className="w-6 h-6 bg-accent text-accent-foreground rounded-full flex items-center justify-center text-xs font-bold">
+                    {index + 1}
+                  </span>
+                  <span className="text-sm text-primary font-medium">{point}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Second Row - 3 Images */}
+            <div className="grid md:grid-cols-3 gap-6">
+              {aboutUsItems.slice(3, 6).map((item, index) => (
+                <div key={index} className="text-center">
+                  <div className="bg-background rounded-xl shadow-md overflow-hidden mb-4 aspect-[4/3]">
+                    <img 
+                      src={item.image} 
+                      alt={item.text} 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <p className="text-muted-foreground text-sm font-medium">{item.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Belief + Mission Section */}
+      <section className="section-padding bg-background">
+        <div className="container-custom">
+          <h2 className="text-3xl md:text-4xl font-bold text-primary text-center mb-4">
+            Our Belief
+          </h2>
+          <p className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto">
+            We believe that every business deserves to be seen and heard in the digital world. Our mission is to bridge the gap between your brand and your audience through innovative digital strategies that drive real results.
+          </p>
+
+          {/* Mission Banner with Overlay */}
+          <div className="relative">
+            {/* Background Image - 70% width */}
+            <div className="ml-auto w-full lg:w-[70%] aspect-[16/9] rounded-2xl overflow-hidden">
+              <img 
+                src={missionBg} 
+                alt="Our Mission Background" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            {/* Floating Overlay Card - Left Side */}
+            <div className="lg:absolute lg:left-0 lg:top-1/2 lg:-translate-y-1/2 mt-6 lg:mt-0 lg:w-[45%]">
+              <div className="bg-background rounded-2xl p-8 shadow-xl">
+                <h3 className="text-2xl font-bold text-primary mb-4">Our Mission</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  We consider Passion, Pace, and Precision as our pillars to serve our audit clients. Our mission is to deliver governed, scope-disciplined GxP audit execution and defensible outcomes across life-sciences environments.
+                </p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Our Belief Section */}
-      <section className="section-padding bg-white">
+      {/* Our Vision Section */}
+      <section className="section-padding bg-background">
         <div className="container-custom">
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">Our Belief</h2>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              We believe that every business deserves to be seen and heard in the digital world. Our mission is to bridge the gap between your brand and your audience through innovative digital strategies that drive real results.
-            </p>
-          </div>
+          {/* Vision Banner with Overlay */}
+          <div className="relative">
+            {/* Background Image - 70% width on left */}
+            <div className="mr-auto w-full lg:w-[70%] aspect-[16/9] rounded-2xl overflow-hidden">
+              <img 
+                src={visionBg} 
+                alt="Our Vision Background" 
+                className="w-full h-full object-cover"
+              />
+            </div>
 
+            {/* Floating Overlay Card - Right Side */}
+            <div className="lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-1/2 mt-6 lg:mt-0 lg:w-[45%]">
+              <div className="bg-background rounded-2xl p-8 shadow-xl">
+                <h3 className="text-2xl font-bold text-primary mb-4">Our Vision</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  At GxPify, our vision is to provide audit outcomes sponsors and audit firms can stand behind — through independent judgment, disciplined scope boundaries, and governance-aligned execution across regulated life-sciences environments.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Dark Blue Split Band - FAQs + Career */}
+      <section className="bg-primary py-16">
+        <div className="container-custom">
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-gradient-to-br from-purple-soft to-secondary rounded-3xl p-8 md:p-12">
-              <Heart className="w-12 h-12 text-accent mb-6" />
-              <h3 className="text-2xl font-bold text-primary mb-4">What We Stand For</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                Integrity, innovation, and client success are at the core of everything we do. We don't just deliver services; we build lasting partnerships that help businesses grow sustainably.
+            {/* Left Column - FAQs */}
+            <div className="text-primary-foreground pr-0 md:pr-8 md:border-r md:border-primary-foreground/20">
+              <h3 className="text-2xl font-bold mb-4">Frequently Asked Questions (FAQs)</h3>
+              <p className="text-primary-foreground/70 mb-6 leading-relaxed">
+                We enjoy educating people on the intricacies of governed audit execution. Every day, we receive questions from sponsors and audit firms.
               </p>
+              <Link 
+                to="/contact" 
+                className="inline-flex items-center gap-2 text-accent hover:text-accent/80 font-semibold underline transition-colors"
+              >
+                Learn More
+                <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
-            <div className="bg-gradient-to-br from-accent/10 to-orange/10 rounded-3xl p-8 md:p-12">
-              <Award className="w-12 h-12 text-primary mb-6" />
-              <h3 className="text-2xl font-bold text-primary mb-4">Our Commitment</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                We are committed to delivering measurable results through transparent processes, continuous learning, and a deep understanding of the ever-evolving digital landscape.
+
+            {/* Right Column - Career */}
+            <div className="text-primary-foreground pl-0 md:pl-8">
+              <h3 className="text-2xl font-bold mb-4">Wanna Rewarding Career?</h3>
+              <p className="text-primary-foreground/70 mb-6 leading-relaxed">
+                Join our team of experts if you value disciplined audit judgment and structured execution. We appreciate a proactive mindset and strong ethical independence.
               </p>
+              <Link 
+                to="/contact" 
+                className="inline-flex items-center gap-2 text-accent hover:text-accent/80 font-semibold underline transition-colors"
+              >
+                Join Our Team
+                <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Mission & Vision */}
-      <section className="relative">
-        {/* Mission */}
-        <div className="relative min-h-[400px] flex items-center">
-          <div className="absolute inset-0 navy-gradient" />
-          <div className="container-custom relative z-10 py-16">
-            <div className="max-w-2xl">
-              <div className="flex items-center gap-4 mb-6">
-                <Target className="w-10 h-10 text-accent" />
-                <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground">Our Mission</h2>
-              </div>
-              <p className="text-xl text-primary-foreground/90 leading-relaxed">
-                To empower businesses of all sizes with cutting-edge digital marketing solutions that drive growth, increase visibility, and create meaningful connections with their target audience.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Vision */}
-        <div className="relative min-h-[400px] flex items-center">
-          <div className="absolute inset-0 bg-gradient-to-r from-accent to-orange" />
-          <div className="container-custom relative z-10 py-16">
-            <div className="max-w-2xl ml-auto text-right">
-              <div className="flex items-center gap-4 mb-6 justify-end">
-                <h2 className="text-3xl md:text-4xl font-bold text-accent-foreground">Our Vision</h2>
-                <Eye className="w-10 h-10 text-accent-foreground" />
-              </div>
-              <p className="text-xl text-accent-foreground/90 leading-relaxed">
-                To be the most trusted digital marketing partner for businesses worldwide, known for our innovative strategies, exceptional results, and unwavering commitment to client success.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="section-padding bg-white">
+      {/* Big CTA Box */}
+      <section className="section-padding bg-background">
         <div className="container-custom">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { number: '500+', label: 'Projects Completed' },
-              { number: '200+', label: 'Happy Clients' },
-              { number: '50+', label: 'Team Members' },
-              { number: '15+', label: 'Industry Awards' },
-            ].map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="stat-number mb-2">{stat.number}</div>
-                <div className="text-muted-foreground">{stat.label}</div>
-              </div>
-            ))}
+          <div className="bg-primary rounded-3xl p-12 text-center shadow-xl">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary-foreground mb-4">
+              Looking for the Assistance of Industry-Best Professionals?
+            </h2>
+            <Link 
+              to="/contact" 
+              className="inline-flex items-center gap-2 text-accent hover:text-accent/80 font-semibold underline text-lg transition-colors"
+            >
+              Reach us Online or Schedule an Appointment To A Live Call!
+              <ArrowRight className="w-5 h-5" />
+            </Link>
           </div>
         </div>
       </section>
 
-      <CTASection />
+      {/* Footer Section (Newsletter + Links) - This supplements the main footer */}
+      <section className="bg-background py-12 border-t border-border">
+        <div className="container-custom">
+          <div className="grid lg:grid-cols-3 gap-8 items-start">
+            {/* Logo + Newsletter */}
+            <div className="lg:col-span-1">
+              <Link to="/" className="flex items-center gap-2 mb-4">
+                <div className="w-10 h-10 bg-accent rounded-lg flex items-center justify-center">
+                  <span className="text-accent-foreground font-bold text-xl">D</span>
+                </div>
+                <span className="text-xl font-bold text-primary">
+                  Digital <span className="text-accent">Piloto</span>
+                </span>
+              </Link>
+              <p className="text-primary font-semibold mb-2">Subscribe to our Newsletter!</p>
+              <p className="text-muted-foreground text-sm mb-2">Stay updated with audit governance perspectives.</p>
+              <p className="text-accent text-sm font-medium mb-4">Subscribe now for Free!</p>
+              
+              <div className="flex">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="px-4 py-2.5 rounded-l-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent flex-1"
+                />
+                <button className="px-4 py-2.5 bg-accent text-accent-foreground rounded-r-lg hover:bg-accent/90 transition-colors flex items-center gap-2">
+                  <Send className="w-4 h-4" />
+                  Subscribe
+                </button>
+              </div>
+            </div>
+
+            {/* Footer Links */}
+            <div className="lg:col-span-1">
+              <h4 className="font-semibold text-primary mb-4">Quick Links</h4>
+              <div className="flex flex-col gap-2">
+                <Link to="/disclaimer" className="text-muted-foreground hover:text-accent transition-colors text-sm">Disclaimer</Link>
+                <Link to="/contact" className="text-muted-foreground hover:text-accent transition-colors text-sm">Contact Us</Link>
+                <Link to="/sitemap" className="text-muted-foreground hover:text-accent transition-colors text-sm">Sitemap</Link>
+                <Link to="/blog" className="text-muted-foreground hover:text-accent transition-colors text-sm">Knowledge Hub</Link>
+                <Link to="/privacy" className="text-muted-foreground hover:text-accent transition-colors text-sm">Privacy Policy</Link>
+              </div>
+            </div>
+
+            {/* Social Icons */}
+            <div className="lg:col-span-1">
+              <h4 className="font-semibold text-primary mb-4">Follow Us</h4>
+              <div className="flex items-center gap-3">
+                {['Facebook', 'Instagram', 'LinkedIn', 'Twitter', 'YouTube'].map((social, index) => (
+                  <a
+                    key={index}
+                    href="#"
+                    aria-label={social}
+                    className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center hover:bg-accent transition-colors group"
+                  >
+                    <span className="text-muted-foreground group-hover:text-accent-foreground text-xs font-bold">
+                      {social.charAt(0)}
+                    </span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </Layout>
   );
 };
