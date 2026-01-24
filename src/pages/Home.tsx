@@ -1,10 +1,16 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Play, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import Layout from '@/components/layout/Layout';
 import FAQSection from '@/components/shared/FAQSection';
 import CTASection from '@/components/shared/CTASection';
 import CareerBanner from '@/components/shared/CareerBanner';
+
+// Import images
+import heroBanner from '@/assets/home-hero-banner.jpg';
+import aboutMeeting from '@/assets/home-about-meeting.jpg';
+import verticalsHealthcare from '@/assets/home-verticals-healthcare.jpg';
+import globalMap from '@/assets/home-global-map.jpg';
 
 const Home = () => {
   const [activeVertical, setActiveVertical] = useState('Healthcare');
@@ -108,54 +114,30 @@ const Home = () => {
 
   return (
     <Layout>
-      {/* Hero Section - Dark Blue with Diagonal Lines */}
-      <section className="relative bg-primary min-h-[80vh] flex items-center overflow-hidden">
-        {/* Diagonal lines pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 30px, rgba(255,255,255,0.1) 30px, rgba(255,255,255,0.1) 31px)',
-          }} />
+      {/* Hero Section - Dark Blue with 3D Cube Image */}
+      <section className="relative min-h-[80vh] flex items-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img 
+            src={heroBanner} 
+            alt="Digital Piloto Hero" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-primary/60" />
         </div>
         
         <div className="container-custom relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left side - 3D Cube Illustration */}
-            <div className="relative flex justify-center lg:justify-start order-2 lg:order-1">
-              <div className="relative w-80 h-80">
-                {/* 3D Cube Visual */}
-                <div className="absolute inset-0 flex items-center justify-center">
-              <div className="relative w-64 h-64 transform rotate-12">
-                    {/* Cube faces */}
-                    <div className="absolute w-full h-full bg-gradient-to-br from-accent/80 to-accent rounded-2xl transform -rotate-6 shadow-2xl">
-                      <div className="grid grid-cols-3 gap-2 p-4 h-full">
-                        {[...Array(9)].map((_, i) => (
-                          <div key={i} className="bg-primary-foreground/20 rounded-lg flex items-center justify-center">
-                            <div className="w-6 h-6 bg-primary-foreground/40 rounded" />
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="absolute w-full h-full bg-gradient-to-br from-teal to-teal/80 rounded-2xl transform rotate-6 -translate-y-8 shadow-2xl">
-                      <div className="grid grid-cols-3 gap-2 p-4 h-full">
-                        {[...Array(9)].map((_, i) => (
-                          <div key={i} className="bg-primary-foreground/20 rounded-lg flex items-center justify-center">
-                            <div className="w-6 h-6 bg-primary-foreground/40 rounded" />
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {/* Left side - Space for cube (already in image) */}
+            <div className="hidden lg:block" />
 
             {/* Right side - Text Content */}
-            <div className="text-white order-1 lg:order-2">
+            <div className="text-primary-foreground">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
                 Build Your Brand's Voice<br />
                 With Robust Digital Strategies!
               </h1>
-              <p className="text-white/80 text-lg mb-8 leading-relaxed max-w-xl">
+              <p className="text-primary-foreground/80 text-lg mb-8 leading-relaxed max-w-xl">
                 Our team of innovative, flexible, & dynamic digital marketing experts leaves no stone unturned to bring your business the desired results. Trust us to make your business grow!
               </p>
               <Link 
@@ -168,8 +150,8 @@ const Home = () => {
 
               {/* Slider dots */}
               <div className="flex gap-2 mt-12">
-                <span className="w-8 h-1 bg-white/30 rounded" />
-                <span className="w-8 h-1 bg-white/30 rounded" />
+                <span className="w-8 h-1 bg-primary-foreground/30 rounded" />
+                <span className="w-8 h-1 bg-primary-foreground/30 rounded" />
                 <span className="w-8 h-1 bg-accent rounded" />
               </div>
             </div>
@@ -178,7 +160,7 @@ const Home = () => {
       </section>
 
       {/* About Us Section */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-background">
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left - Text */}
@@ -199,18 +181,12 @@ const Home = () => {
 
             {/* Right - Business Meeting Image */}
             <div className="relative">
-              <div className="bg-gradient-to-br from-secondary to-muted rounded-xl overflow-hidden shadow-lg aspect-[4/3]">
-                <div className="w-full h-full bg-gradient-to-br from-muted to-border flex items-center justify-center">
-                  {/* Placeholder for business meeting image */}
-                  <div className="text-center text-muted-foreground">
-                    <div className="w-32 h-32 bg-muted rounded-full mx-auto mb-4 flex items-center justify-center">
-                      <svg className="w-16 h-16" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                      </svg>
-                    </div>
-                    <p className="text-sm">Business Meeting</p>
-                  </div>
-                </div>
+              <div className="rounded-xl overflow-hidden shadow-lg aspect-[4/3]">
+                <img 
+                  src={aboutMeeting} 
+                  alt="Business Meeting" 
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </div>
@@ -226,8 +202,8 @@ const Home = () => {
             </div>
             <div className="flex flex-wrap justify-center lg:justify-start items-center gap-8 lg:gap-12 flex-1">
               {credentials.map((cred, index) => (
-                <div key={index} className="flex items-center gap-3 text-white">
-                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
+                <div key={index} className="flex items-center gap-3 text-accent-foreground">
+                  <div className="w-12 h-12 bg-accent-foreground rounded-full flex items-center justify-center">
                     <span className="text-xs font-bold text-accent">{cred.short}</span>
                   </div>
                   <span className="text-sm font-medium max-w-[120px] leading-tight">{cred.name}</span>
@@ -239,7 +215,7 @@ const Home = () => {
       </section>
 
       {/* Verticals Section */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-background">
         <div className="container-custom">
           <h2 className="text-3xl md:text-4xl font-bold text-primary text-center mb-4">
             Verticals Digital Piloto Caters With Grace And Guarantee!
@@ -268,15 +244,12 @@ const Home = () => {
 
             {/* Center - Image */}
             <div className="lg:col-span-4">
-              <div className="bg-gradient-to-br from-secondary to-muted rounded-xl aspect-[4/3] flex items-center justify-center">
-                <div className="text-center text-muted-foreground p-8">
-                  <div className="w-24 h-24 bg-muted rounded-full mx-auto mb-4 flex items-center justify-center">
-                    <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                    </svg>
-                  </div>
-                  <p className="text-sm">{activeVertical} Team</p>
-                </div>
+              <div className="rounded-xl overflow-hidden aspect-[4/3]">
+                <img 
+                  src={verticalsHealthcare} 
+                  alt={`${activeVertical} Team`} 
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
 
@@ -301,30 +274,23 @@ const Home = () => {
       </section>
 
       {/* Serving Global Community Section */}
-      <section className="relative bg-primary py-20 overflow-hidden">
-        <div className="container-custom">
+      <section className="relative py-20 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img 
+            src={globalMap} 
+            alt="Global Coverage" 
+            className="w-full h-full object-cover"
+          />
+        </div>
+        
+        <div className="container-custom relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left - World Map */}
-            <div className="relative">
-              <div className="aspect-[4/3] relative">
-                {/* World map silhouette placeholder */}
-                <div className="absolute inset-0 opacity-50">
-                  <svg viewBox="0 0 800 400" className="w-full h-full">
-                    {/* Simplified world map shape */}
-                    <ellipse cx="400" cy="200" rx="350" ry="150" fill="currentColor" className="text-muted" opacity="0.3" />
-                    {/* Highlighted regions in orange */}
-                    <circle cx="150" cy="150" r="40" fill="currentColor" className="text-accent" opacity="0.8" />
-                    <circle cx="200" cy="200" r="30" fill="currentColor" className="text-accent" opacity="0.8" />
-                    <circle cx="550" cy="180" r="45" fill="currentColor" className="text-accent" opacity="0.8" />
-                    <circle cx="600" cy="280" r="35" fill="currentColor" className="text-accent" opacity="0.8" />
-                    <circle cx="450" cy="150" r="25" fill="currentColor" className="text-accent" opacity="0.8" />
-                  </svg>
-                </div>
-              </div>
-            </div>
+            {/* Left - Space for map (already in image) */}
+            <div className="hidden lg:block" />
 
             {/* Right - Country List Card */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
+            <div className="bg-background rounded-2xl p-8 shadow-lg">
               <h3 className="text-xl font-bold text-primary mb-2">SERVING THE GLOBAL COMMUNITY!</h3>
               <p className="text-accent text-sm mb-6 leading-relaxed">
                 Digital Piloto has earned confidence via prowess, R&D, and technical know-how that can benefit top businesses covering any geographic location! Our cross-industry knowledge is our strength that we enforce while we work for our global clients!
@@ -343,14 +309,14 @@ const Home = () => {
       </section>
 
       {/* Trusted by Our Clients */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-background">
         <div className="container-custom">
           <h2 className="text-3xl md:text-4xl font-bold text-primary text-center mb-12">
             Trusted by our Clients
           </h2>
           
           <div className="relative">
-            <button className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white shadow-md rounded-full flex items-center justify-center text-muted-foreground hover:text-primary transition-colors">
+            <button className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-background shadow-md rounded-full flex items-center justify-center text-muted-foreground hover:text-primary transition-colors">
               <ChevronLeft className="w-5 h-5" />
             </button>
             
@@ -362,7 +328,7 @@ const Home = () => {
               ))}
             </div>
 
-            <button className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white shadow-md rounded-full flex items-center justify-center text-muted-foreground hover:text-primary transition-colors">
+            <button className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-background shadow-md rounded-full flex items-center justify-center text-muted-foreground hover:text-primary transition-colors">
               <ChevronRight className="w-5 h-5" />
             </button>
           </div>
@@ -387,20 +353,20 @@ const Home = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {resourceBoxItems.map((item, index) => (
-              <div key={index} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow group">
+              <div key={index} className="bg-background rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow group">
                 {/* Card Image */}
                 <div className="relative aspect-[16/10] bg-gradient-to-br from-primary to-primary/80">
                   <div className="absolute inset-0 flex items-center justify-center p-6">
-                    <div className="text-white text-center">
-                      <div className="text-xs font-semibold text-accent mb-2">digital<span className="text-white">piloto</span>*</div>
+                    <div className="text-primary-foreground text-center">
+                      <div className="text-xs font-semibold text-accent mb-2">digital<span className="text-primary-foreground">piloto</span>*</div>
                       <h4 className="font-bold text-sm leading-snug">{item.title}</h4>
                     </div>
                   </div>
                   {/* Author badge */}
-                  <div className="absolute bottom-4 right-4 bg-white rounded-lg p-2 shadow">
+                  <div className="absolute bottom-4 right-4 bg-background rounded-lg p-2 shadow">
                     <div className="flex items-center gap-2">
                       <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center">
-                        <span className="text-white text-xs font-bold">{item.author.charAt(0)}</span>
+                        <span className="text-accent-foreground text-xs font-bold">{item.author.charAt(0)}</span>
                       </div>
                       <div className="text-xs">
                         <p className="text-muted-foreground">Presented by</p>
