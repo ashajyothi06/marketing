@@ -46,8 +46,8 @@ const Header = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-background/95 backdrop-blur-md shadow-md py-3'
-          : 'bg-transparent py-5'
+          ? 'bg-primary backdrop-blur-md shadow-md py-3'
+          : 'bg-primary py-5'
       }`}
     >
       <div className="container-custom flex items-center justify-between">
@@ -56,7 +56,7 @@ const Header = () => {
           <div className="w-10 h-10 bg-accent rounded-lg flex items-center justify-center">
             <span className="text-accent-foreground font-bold text-xl">D</span>
           </div>
-          <span className="text-xl font-bold text-primary">
+          <span className="text-xl font-bold text-primary-foreground">
             Digital <span className="text-accent">Piloto</span>
           </span>
         </Link>
@@ -69,7 +69,7 @@ const Header = () => {
             onMouseEnter={() => setActiveDropdown('about')}
             onMouseLeave={() => setActiveDropdown(null)}
           >
-            <button className="nav-link flex items-center gap-1 py-2">
+            <button className="text-primary-foreground/80 hover:text-accent font-medium transition-colors flex items-center gap-1 py-2">
               About <ChevronDown className="w-4 h-4" />
             </button>
             {activeDropdown === 'about' && (
@@ -118,7 +118,7 @@ const Header = () => {
             onMouseEnter={() => setActiveDropdown('digital')}
             onMouseLeave={() => setActiveDropdown(null)}
           >
-            <button className="nav-link flex items-center gap-1 py-2">
+            <button className="text-primary-foreground/80 hover:text-accent font-medium transition-colors flex items-center gap-1 py-2">
               Digital Marketing <ChevronDown className="w-4 h-4" />
             </button>
             {activeDropdown === 'digital' && (
@@ -138,21 +138,21 @@ const Header = () => {
             )}
           </div>
 
-          <Link to="/design-development" className="nav-link py-2">
+          <Link to="/design-development" className="text-primary-foreground/80 hover:text-accent font-medium transition-colors py-2">
             Design & Development
           </Link>
-          <Link to="/blog" className="nav-link py-2">
+          <Link to="/blog" className="text-primary-foreground/80 hover:text-accent font-medium transition-colors py-2">
             Blog
           </Link>
-          <Link to="/contact" className="nav-link py-2">
+          <Link to="/contact" className="text-primary-foreground/80 hover:text-accent font-medium transition-colors py-2">
             Contact Us
           </Link>
         </nav>
 
         {/* Right Actions */}
         <div className="hidden lg:flex items-center gap-4">
-          <button className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center hover:bg-secondary/80 transition-colors">
-            <Phone className="w-5 h-5 text-primary" />
+          <button className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-accent transition-colors">
+            <Phone className="w-5 h-5 text-primary-foreground" />
           </button>
           <Link to="/contact" className="btn-orange">
             Get a Proposal
@@ -165,9 +165,9 @@ const Header = () => {
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? (
-            <X className="w-6 h-6 text-primary" />
+            <X className="w-6 h-6 text-primary-foreground" />
           ) : (
-            <Menu className="w-6 h-6 text-primary" />
+            <Menu className="w-6 h-6 text-primary-foreground" />
           )}
         </button>
       </div>
