@@ -78,57 +78,65 @@ const Home = () => {
 
   return (
     <Layout>
-      {/* ✅ HERO SECTION — Exact match to screenshot */}
+      {/* ✅ UNIFIED HERO SECTION — All 3 parts combined */}
       <section className="relative overflow-hidden">
-        {/* Top Hero - Dark Navy with Diagonal Lines */}
-        <div className="relative bg-[#062a48] min-h-[60vh]">
+        {/* PART 1: Top Hero - Dark Navy with Diagonal Lines + Cube + Text */}
+        <div className="relative bg-[#062a48]">
           {/* Diagonal Lines Pattern */}
           <div className="absolute inset-0 overflow-hidden">
             <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
               <defs>
                 <pattern id="diagonalLines" patternUnits="userSpaceOnUse" width="60" height="60" patternTransform="rotate(-45)">
-                  <line x1="0" y1="0" x2="0" y2="60" stroke="rgba(255,255,255,0.03)" strokeWidth="1" />
+                  <line x1="0" y1="0" x2="0" y2="60" stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
                 </pattern>
               </defs>
               <rect width="100%" height="100%" fill="url(#diagonalLines)" />
             </svg>
           </div>
 
-          <div className="container-custom relative z-10 py-16 lg:py-20">
-            <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[50vh]">
-              {/* Left side - 3D Cube Graphic Area */}
+          {/* Orange accent dots on left side */}
+          <div className="absolute left-0 top-1/4 flex flex-col gap-3">
+            <div className="w-2 h-2 bg-orange-500 rounded-full" />
+            <div className="w-2 h-2 bg-orange-500 rounded-full" />
+            <div className="w-2 h-2 bg-orange-500 rounded-full" />
+          </div>
+
+          <div className="container-custom relative z-10 py-12 lg:py-16">
+            <div className="grid lg:grid-cols-2 gap-8 items-center">
+              {/* Left side - 3D Cube Graphic */}
               <div className="flex justify-center lg:justify-start">
-                <div className="relative w-64 h-64 md:w-80 md:h-80">
+                <div className="relative w-56 h-56 md:w-72 md:h-72">
                   {/* 3D Cube representation with icons */}
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="relative">
-                      {/* Cube faces simulation */}
-                      <div className="grid grid-cols-3 gap-1 transform rotate-[-10deg] skew-y-[5deg]">
+                      {/* Main cube front face */}
+                      <div className="grid grid-cols-3 gap-1 transform rotate-[-8deg] skew-y-[3deg]">
                         {[...Array(9)].map((_, i) => (
                           <div 
                             key={i} 
-                            className="w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-slate-100 to-slate-300 rounded-lg shadow-lg flex items-center justify-center transform hover:scale-105 transition-transform"
+                            className="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-slate-100 to-slate-200 rounded-md shadow-lg flex items-center justify-center"
                           >
-                            <div className="text-primary text-lg md:text-xl">
+                            <div className="text-[#062a48] text-base md:text-lg">
                               {['📊', '🎯', '💡', '📈', '🔧', '📱', '💼', '🌐', '⚡'][i]}
                             </div>
                           </div>
                         ))}
                       </div>
-                      {/* Side faces */}
-                      <div className="absolute -right-3 top-2 grid grid-rows-3 gap-1 transform skew-y-[40deg]">
+                      {/* Right side face */}
+                      <div className="absolute -right-2 top-1 grid grid-rows-3 gap-1 transform skew-y-[40deg]">
                         {[...Array(3)].map((_, i) => (
                           <div 
                             key={i} 
-                            className="w-8 h-14 md:w-10 md:h-16 bg-gradient-to-r from-slate-300 to-slate-400 rounded-r-lg shadow-lg"
+                            className="w-6 h-12 md:w-8 md:h-14 bg-gradient-to-r from-slate-200 to-slate-300 rounded-r-md shadow-lg"
                           />
                         ))}
                       </div>
-                      <div className="absolute -bottom-3 left-2 grid grid-cols-3 gap-1 transform skew-x-[40deg]">
+                      {/* Bottom face */}
+                      <div className="absolute -bottom-2 left-1 grid grid-cols-3 gap-1 transform skew-x-[40deg]">
                         {[...Array(3)].map((_, i) => (
                           <div 
                             key={i} 
-                            className="w-14 h-8 md:w-16 md:h-10 bg-gradient-to-b from-slate-400 to-slate-500 rounded-b-lg shadow-lg"
+                            className="w-12 h-6 md:w-14 md:h-8 bg-gradient-to-b from-slate-300 to-slate-400 rounded-b-md shadow-lg"
                           />
                         ))}
                       </div>
@@ -139,19 +147,19 @@ const Home = () => {
 
               {/* Right side - Text Content */}
               <div className="text-white max-w-xl">
-                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
+                <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight">
                   Build Your Brand's Voice
                   <br />
                   With Robust Digital Strategies!
                 </h1>
 
-                <p className="mt-6 text-white/80 text-base md:text-lg leading-relaxed">
+                <p className="mt-4 text-white/80 text-sm md:text-base leading-relaxed">
                   Our team of innovative, flexible, &amp; dynamic digital marketing experts leaves no stone unturned to bring your business the desired results. Trust us to make your business grow!
                 </p>
 
                 <Link
                   to="/about/company-info"
-                  className="mt-8 inline-flex items-center gap-2 text-orange-400 font-medium hover:text-orange-300 transition-colors"
+                  className="mt-6 inline-flex items-center gap-2 text-orange-400 font-medium hover:text-orange-300 transition-colors"
                 >
                   Explore Opportunities
                   <ArrowRight className="w-5 h-5" />
@@ -160,32 +168,32 @@ const Home = () => {
             </div>
 
             {/* Slider indicators - bottom right */}
-            <div className="absolute bottom-8 right-8 hidden md:flex items-center gap-2">
-              <span className="w-8 h-[3px] rounded bg-white/40" />
-              <span className="w-8 h-[3px] rounded bg-white/40" />
-              <span className="w-8 h-[3px] rounded bg-orange-500" />
+            <div className="absolute bottom-4 right-8 hidden md:flex items-center gap-2">
+              <span className="w-6 h-[2px] rounded bg-white/40" />
+              <span className="w-6 h-[2px] rounded bg-white/40" />
+              <span className="w-6 h-[2px] rounded bg-orange-500" />
             </div>
           </div>
         </div>
 
-        {/* Bottom Hero - About Section with Light Background */}
+        {/* PART 2: About Section - Light Gray Background */}
         <div className="relative bg-slate-100">
-          {/* Orange diagonal accent line */}
-          <div className="absolute left-0 top-0 w-2 h-full bg-gradient-to-b from-orange-500 via-orange-500 to-transparent" />
+          {/* Orange vertical accent line */}
+          <div className="absolute left-0 top-0 w-1.5 h-full bg-gradient-to-b from-orange-500 via-orange-500 to-transparent" />
           
-          <div className="container-custom py-16 lg:py-20">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="container-custom py-12 lg:py-16">
+            <div className="grid lg:grid-cols-2 gap-8 items-center">
               {/* Left - Text Content */}
               <div>
-                <span className="text-sm font-semibold text-muted-foreground tracking-widest uppercase mb-4 block">
+                <span className="text-xs font-semibold text-muted-foreground tracking-widest uppercase mb-3 block">
                   ABOUT US
                 </span>
-                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-8 leading-tight">
+                <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-[#062a48] mb-6 leading-tight">
                   Bespoke Digital Marketing Services And Consultancy To Get Your Business Covered!
                 </h2>
                 <Link
                   to="/about/company-info"
-                  className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded font-semibold hover:bg-primary/90 transition-colors uppercase text-sm tracking-wide"
+                  className="inline-flex items-center gap-2 bg-[#062a48] text-white px-5 py-2.5 rounded font-semibold hover:bg-[#0a3d66] transition-colors uppercase text-xs tracking-wide"
                 >
                   KNOW MORE
                 </Link>
@@ -204,24 +212,33 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </section>
 
-      {/* Our Credentials Banner */}
-      <section className="bg-accent py-8">
-        <div className="container-custom">
-          <div className="flex flex-col lg:flex-row items-center gap-8">
-            <div className="bg-accent-foreground text-accent px-8 py-4 rounded-r-full lg:rounded-r-full lg:rounded-l-none rounded-full lg:-ml-8">
-              <h3 className="text-2xl font-bold whitespace-nowrap">Our Credentials</h3>
-            </div>
-            <div className="flex flex-wrap justify-center lg:justify-start items-center gap-8 lg:gap-12 flex-1">
-              {credentials.map((cred, index) => (
-                <div key={index} className="flex items-center gap-3 text-accent-foreground">
-                  <div className="w-12 h-12 bg-accent-foreground rounded-full flex items-center justify-center">
-                    <span className="text-xs font-bold text-accent">{cred.short}</span>
-                  </div>
-                  <span className="text-sm font-medium max-w-[120px] leading-tight">{cred.name}</span>
+        {/* PART 3: Our Credentials Banner - Orange Strip */}
+        <div className="bg-orange-500 py-6">
+          <div className="container-custom">
+            <div className="flex flex-col lg:flex-row items-center gap-6">
+              {/* Orange pill with arrow shape */}
+              <div className="relative bg-white text-orange-500 px-8 py-3 rounded-r-full font-bold text-xl whitespace-nowrap shadow-md lg:-ml-4">
+                <span className="relative z-10">Our Credentials</span>
+                {/* Arrow point */}
+                <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-3">
+                  <svg width="20" height="40" viewBox="0 0 20 40" fill="white">
+                    <polygon points="0,0 20,20 0,40" />
+                  </svg>
                 </div>
-              ))}
+              </div>
+              
+              {/* Credentials logos row */}
+              <div className="flex flex-wrap justify-center lg:justify-start items-center gap-6 lg:gap-10 flex-1 bg-white/95 py-4 px-6 rounded-lg">
+                {credentials.map((cred, index) => (
+                  <div key={index} className="flex items-center gap-2">
+                    <div className="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center border border-slate-200">
+                      <span className="text-[10px] font-bold text-[#062a48]">{cred.short}</span>
+                    </div>
+                    <span className="text-xs font-medium text-slate-700 max-w-[100px] leading-tight">{cred.name}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
