@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight, BarChart3, Target, Lightbulb, TrendingUp, Settings, Smartphone, Briefcase, Globe, Zap } from 'lucide-react';
 import Layout from '@/components/layout/Layout';
 import FAQSection from '@/components/shared/FAQSection';
 import CTASection from '@/components/shared/CTASection';
 import CareerBanner from '@/components/shared/CareerBanner';
-
 // Import images
 import heroBanner from '@/assets/home-hero-banner.jpg';
 import aboutMeeting from '@/assets/home-about-meeting.jpg';
@@ -111,14 +110,12 @@ const Home = () => {
                     <div className="relative">
                       {/* Main cube front face */}
                       <div className="grid grid-cols-3 gap-1 transform rotate-[-8deg] skew-y-[3deg]">
-                        {[...Array(9)].map((_, i) => (
+                        {[BarChart3, Target, Lightbulb, TrendingUp, Settings, Smartphone, Briefcase, Globe, Zap].map((Icon, i) => (
                           <div 
                             key={i} 
                             className="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-slate-100 to-slate-200 rounded-md shadow-lg flex items-center justify-center"
                           >
-                            <div className="text-[#062a48] text-base md:text-lg">
-                              {['📊', '🎯', '💡', '📈', '🔧', '📱', '💼', '🌐', '⚡'][i]}
-                            </div>
+                            <Icon className="w-5 h-5 md:w-6 md:h-6 text-[#062a48]" />
                           </div>
                         ))}
                       </div>
