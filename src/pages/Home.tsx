@@ -78,37 +78,69 @@ const Home = () => {
 
   return (
     <Layout>
-      {/* ✅ HERO SECTION — Updated to match screenshot */}
-      <section className="relative min-h-[82vh] overflow-hidden bg-[#062a48]">
-        {/* Background image (the banner that contains cube + diagonal pattern) */}
-        <div className="absolute inset-0">
-          <img
-            src={heroBanner}
-            alt="Digital Piloto Hero"
-            className="w-full h-full object-cover object-left"
-          />
-          {/* Dark overlay (keep image visible like screenshot) */}
-          <div className="absolute inset-0 bg-[#062a48]/40" />
-        </div>
-
-        {/* Top-center paper plane icon (like screenshot) */}
-        <div className="absolute top-6 left-1/2 -translate-x-1/2 z-20">
-          <div className="w-9 h-9 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center">
-            <span className="text-white text-lg">✈️</span>
+      {/* ✅ HERO SECTION — Exact match to screenshot */}
+      <section className="relative overflow-hidden">
+        {/* Top Hero - Dark Navy with Diagonal Lines */}
+        <div className="relative bg-[#062a48] min-h-[60vh]">
+          {/* Diagonal Lines Pattern */}
+          <div className="absolute inset-0 overflow-hidden">
+            <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
+              <defs>
+                <pattern id="diagonalLines" patternUnits="userSpaceOnUse" width="60" height="60" patternTransform="rotate(-45)">
+                  <line x1="0" y1="0" x2="0" y2="60" stroke="rgba(255,255,255,0.03)" strokeWidth="1" />
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#diagonalLines)" />
+            </svg>
           </div>
-        </div>
 
-        {/* Content */}
-        <div className="relative z-10 h-full">
-          <div className="container-custom h-full">
-            <div className="grid lg:grid-cols-2 h-full items-center gap-12 py-20">
-              {/* Left side kept empty because banner image already has cube */}
-              <div className="hidden lg:block" />
+          <div className="container-custom relative z-10 py-16 lg:py-20">
+            <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[50vh]">
+              {/* Left side - 3D Cube Graphic Area */}
+              <div className="flex justify-center lg:justify-start">
+                <div className="relative w-64 h-64 md:w-80 md:h-80">
+                  {/* 3D Cube representation with icons */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="relative">
+                      {/* Cube faces simulation */}
+                      <div className="grid grid-cols-3 gap-1 transform rotate-[-10deg] skew-y-[5deg]">
+                        {[...Array(9)].map((_, i) => (
+                          <div 
+                            key={i} 
+                            className="w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-slate-100 to-slate-300 rounded-lg shadow-lg flex items-center justify-center transform hover:scale-105 transition-transform"
+                          >
+                            <div className="text-primary text-lg md:text-xl">
+                              {['📊', '🎯', '💡', '📈', '🔧', '📱', '💼', '🌐', '⚡'][i]}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      {/* Side faces */}
+                      <div className="absolute -right-3 top-2 grid grid-rows-3 gap-1 transform skew-y-[40deg]">
+                        {[...Array(3)].map((_, i) => (
+                          <div 
+                            key={i} 
+                            className="w-8 h-14 md:w-10 md:h-16 bg-gradient-to-r from-slate-300 to-slate-400 rounded-r-lg shadow-lg"
+                          />
+                        ))}
+                      </div>
+                      <div className="absolute -bottom-3 left-2 grid grid-cols-3 gap-1 transform skew-x-[40deg]">
+                        {[...Array(3)].map((_, i) => (
+                          <div 
+                            key={i} 
+                            className="w-14 h-8 md:w-16 md:h-10 bg-gradient-to-b from-slate-400 to-slate-500 rounded-b-lg shadow-lg"
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-              {/* Right side text (aligned like screenshot) */}
-              <div className="text-white max-w-xl ml-auto">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                  Build Your Brand’s Voice
+              {/* Right side - Text Content */}
+              <div className="text-white max-w-xl">
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
+                  Build Your Brand's Voice
                   <br />
                   With Robust Digital Strategies!
                 </h1>
@@ -119,50 +151,55 @@ const Home = () => {
 
                 <Link
                   to="/about/company-info"
-                  className="mt-8 inline-flex items-center gap-2 text-white font-medium hover:text-orange-400 transition-colors"
+                  className="mt-8 inline-flex items-center gap-2 text-orange-400 font-medium hover:text-orange-300 transition-colors"
                 >
                   Explore Opportunities
-                  <ArrowRight className="w-5 h-5 text-orange-400" />
+                  <ArrowRight className="w-5 h-5" />
                 </Link>
-
-                {/* Slider lines (bottom-right like screenshot) */}
-                <div className="absolute bottom-12 right-10 hidden md:flex items-center gap-2">
-                  <span className="w-8 h-[3px] rounded bg-white/40" />
-                  <span className="w-8 h-[3px] rounded bg-white/40" />
-                  <span className="w-8 h-[3px] rounded bg-orange-500" />
-                </div>
               </div>
+            </div>
+
+            {/* Slider indicators - bottom right */}
+            <div className="absolute bottom-8 right-8 hidden md:flex items-center gap-2">
+              <span className="w-8 h-[3px] rounded bg-white/40" />
+              <span className="w-8 h-[3px] rounded bg-white/40" />
+              <span className="w-8 h-[3px] rounded bg-orange-500" />
             </div>
           </div>
         </div>
-      </section>
 
-      {/* About Us Section */}
-      <section className="section-padding bg-background">
-        <div className="container-custom">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <span className="text-sm font-semibold text-muted-foreground tracking-wider uppercase mb-4 block">
-                ABOUT US
-              </span>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6 leading-tight">
-                Bespoke Digital Marketing Services And Consultancy To Get Your Business Covered!
-              </h2>
-              <Link
-                to="/about/company-info"
-                className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-md font-semibold hover:bg-primary/90 transition-colors"
-              >
-                KNOW MORE
-              </Link>
-            </div>
+        {/* Bottom Hero - About Section with Light Background */}
+        <div className="relative bg-slate-100">
+          {/* Orange diagonal accent line */}
+          <div className="absolute left-0 top-0 w-2 h-full bg-gradient-to-b from-orange-500 via-orange-500 to-transparent" />
+          
+          <div className="container-custom py-16 lg:py-20">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Left - Text Content */}
+              <div>
+                <span className="text-sm font-semibold text-muted-foreground tracking-widest uppercase mb-4 block">
+                  ABOUT US
+                </span>
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-8 leading-tight">
+                  Bespoke Digital Marketing Services And Consultancy To Get Your Business Covered!
+                </h2>
+                <Link
+                  to="/about/company-info"
+                  className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded font-semibold hover:bg-primary/90 transition-colors uppercase text-sm tracking-wide"
+                >
+                  KNOW MORE
+                </Link>
+              </div>
 
-            <div className="relative">
-              <div className="rounded-xl overflow-hidden shadow-lg aspect-[4/3]">
-                <img
-                  src={aboutMeeting}
-                  alt="Business Meeting"
-                  className="w-full h-full object-cover"
-                />
+              {/* Right - Meeting Image */}
+              <div className="relative">
+                <div className="rounded-lg overflow-hidden shadow-xl">
+                  <img
+                    src={aboutMeeting}
+                    alt="Business Meeting"
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
               </div>
             </div>
           </div>
