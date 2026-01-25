@@ -118,7 +118,7 @@ const CompanyInfo = () => {
               <div className="bg-background rounded-2xl p-8 shadow-xl">
                 <h3 className="text-2xl font-bold text-primary mb-4">Our Mission</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  We consider Passion, Pace, and Precision as our pillars to serve our audit clients. Our mission is to deliver governed, scope-disciplined GxP audit execution and defensible outcomes across life-sciences environments.
+                  We consider Passion, Pace, and Precision as our pillars to serve our clients. Our mission is to deliver data-driven digital marketing strategies that maximize ROI and help businesses achieve sustainable growth in the competitive online landscape.
                 </p>
               </div>
             </div>
@@ -145,7 +145,7 @@ const CompanyInfo = () => {
               <div className="bg-background rounded-2xl p-8 shadow-xl">
                 <h3 className="text-2xl font-bold text-primary mb-4">Our Vision</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  At GxPify, our vision is to provide audit outcomes sponsors and audit firms can stand behind — through independent judgment, disciplined scope boundaries, and governance-aligned execution across regulated life-sciences environments.
+                  At Digital Piloto, our vision is to be the most trusted digital marketing partner for businesses worldwide — through innovative strategies, transparent practices, and results-driven campaigns that transform brands and accelerate growth.
                 </p>
               </div>
             </div>
@@ -161,7 +161,7 @@ const CompanyInfo = () => {
             <div className="text-primary-foreground pr-0 md:pr-8 md:border-r md:border-primary-foreground/20">
               <h3 className="text-2xl font-bold mb-4">Frequently Asked Questions (FAQs)</h3>
               <p className="text-primary-foreground/70 mb-6 leading-relaxed">
-                We enjoy educating people on the intricacies of governed audit execution. Every day, we receive questions from sponsors and audit firms.
+                We enjoy educating people on the intricacies of digital marketing. Every day, we receive questions from businesses looking to grow their online presence.
               </p>
               <Link 
                 to="/contact" 
@@ -176,7 +176,7 @@ const CompanyInfo = () => {
             <div className="text-primary-foreground pl-0 md:pl-8">
               <h3 className="text-2xl font-bold mb-4">Wanna Rewarding Career?</h3>
               <p className="text-primary-foreground/70 mb-6 leading-relaxed">
-                Join our team of experts if you value disciplined audit judgment and structured execution. We appreciate a proactive mindset and strong ethical independence.
+                Join our team of digital marketing experts who are passionate about creativity and innovation. We appreciate a proactive mindset and a drive to deliver exceptional results.
               </p>
               <Link 
                 to="/contact" 
@@ -223,7 +223,7 @@ const CompanyInfo = () => {
                 </span>
               </Link>
               <p className="text-primary font-semibold mb-2">Subscribe to our Newsletter!</p>
-              <p className="text-muted-foreground text-sm mb-2">Stay updated with audit governance perspectives.</p>
+              <p className="text-muted-foreground text-sm mb-2">Stay updated with the latest digital marketing trends and tips.</p>
               <p className="text-accent text-sm font-medium mb-4">Subscribe now for Free!</p>
               
               <div className="flex">
