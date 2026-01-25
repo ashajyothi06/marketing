@@ -1,23 +1,5 @@
-import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  ArrowRight,
-  ChevronLeft,
-  ChevronRight,
-  Users,
-  CheckCircle,
-  MessageSquare,
-  UserCheck,
-  Code,
-  Palette,
-  ShoppingCart,
-  Send,
-  Facebook,
-  Instagram,
-  Linkedin,
-  Twitter,
-  Youtube,
-} from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight, Users, CheckCircle, MessageSquare, UserCheck, Code, Palette, ShoppingCart, Send, Facebook, Instagram, Linkedin, Twitter, Youtube } from 'lucide-react';
 import Layout from '@/components/layout/Layout';
 
 // Import images
@@ -26,49 +8,7 @@ import portfolioGrid from '@/assets/gxpify-portfolio-grid.jpg';
 import landingCollage from '@/assets/gxpify-landing-collage.jpg';
 import sanjayPortrait from '@/assets/gxpify-sanjay-portrait.jpg';
 
-import brochure1 from "@/assets/1.png";
-import brochure2 from "@/assets/2.png";
-import brochure3 from "@/assets/111.png";
-
-
 const DesignDevelopment = () => {
-  // ✅ PORTFOLIO SLIDER (working arrows)
-  const portfolioImages = useMemo(
-    () => [
-      // Replace / add your real portfolio images here (screenshots)
-      portfolioGrid,
-      portfolioGrid,
-      portfolioGrid,
-      portfolioGrid,
-      portfolioGrid,
-      portfolioGrid,
-      portfolioGrid,
-      portfolioGrid,
-      portfolioGrid,
-      portfolioGrid,
-      portfolioGrid,
-      portfolioGrid,
-    ],
-    []
-  );
-
-  const chunkArray = (arr: string[], size: number) => {
-    const result: string[][] = [];
-    for (let i = 0; i < arr.length; i += size) result.push(arr.slice(i, i + size));
-    return result;
-  };
-
-  const portfolioSlides = useMemo(() => chunkArray(portfolioImages, 4), [portfolioImages]);
-  const [portfolioIndex, setPortfolioIndex] = useState(0);
-
-  const handleNextPortfolio = () => {
-    setPortfolioIndex((prev) => (prev === portfolioSlides.length - 1 ? 0 : prev + 1));
-  };
-
-  const handlePrevPortfolio = () => {
-    setPortfolioIndex((prev) => (prev === 0 ? portfolioSlides.length - 1 : prev - 1));
-  };
-
   const uspItems = [
     { icon: Users, title: 'Dedicated Team Of Developers' },
     { icon: CheckCircle, title: 'In-Depth Quality Check' },
@@ -108,319 +48,185 @@ const DesignDevelopment = () => {
 
   return (
     <Layout>
-      {/* ✅ HERO — updated to match screenshot (center text + scroll + smooth wave, no bottom line) */}
-      <section className="relative min-h-[78vh] md:min-h-[82vh] flex items-center overflow-hidden">
-        {/* Background Image + Strong Blue Overlay */}
+      {/* Hero Section with Blue Overlay and Wave */}
+      <section className="relative min-h-[80vh] flex items-center overflow-hidden">
+        {/* Background Image with Blue Overlay */}
         <div className="absolute inset-0">
-          <img
-            src={heroBg}
-            alt="Digital Piloto Web Design & Development"
-            className="w-full h-full object-cover object-center"
+          <img 
+            src={heroBg} 
+            alt="GxPify Web Design & Development" 
+            className="w-full h-full object-cover"
           />
-          {/* blue overlay like screenshot (top darker, bottom lighter) */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#061a33]/70 via-[#0a2b55]/70 to-[#0b3a78]/75" />
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/85 via-primary/80 to-primary/90" />
         </div>
 
-        {/* Center Content */}
-        <div className="container-custom relative z-10 text-center py-24">
-          <p className="text-white/60 text-xs md:text-sm tracking-[0.45em] uppercase mb-6">
+        {/* Content - Center Aligned */}
+        <div className="container-custom relative z-10 text-center py-20">
+          <p className="text-primary-foreground/60 text-sm tracking-[0.4em] uppercase mb-6">
             W E L C O M E &nbsp; T O
           </p>
-
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold text-white mb-4 font-serif">
-            Digital Piloto
+          <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-primary-foreground mb-6 font-serif">
+            GxPify
           </h1>
-
-          <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold text-[#f4b41a]">
-            Web Design &amp; Development
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-accent">
+            Web Design & Development
           </h2>
-
-          {/* Scroll indicator (small rounded pill) */}
-          <div className="mt-10 flex justify-center">
-            <div className="w-10 h-14 rounded-full border border-white/30 bg-white/5 backdrop-blur-sm flex items-center justify-center">
-              <div className="w-1.5 h-4 rounded-full bg-white/60" />
-            </div>
-          </div>
         </div>
 
-        {/* Curved Wave Separator (curve only, no shading/line) */}
-        <div className="absolute bottom-0 left-0 right-0 pointer-events-none">
-          <svg
-            viewBox="0 0 1440 110"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-full block"
-            preserveAspectRatio="none"
-          >
-            <path
-              d="M0 95C240 110 480 110 720 96C960 82 1200 55 1440 70V110H0V95Z"
-              fill="hsl(var(--background))"
-            />
+        {/* Curved Wave Separator */}
+        <div className="absolute bottom-0 left-0 right-0">
+          <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full" preserveAspectRatio="none">
+            <path d="M0 60C240 100 480 120 720 100C960 80 1200 40 1440 60V120H0V60Z" fill="hsl(var(--background))"/>
           </svg>
         </div>
       </section>
 
-      {/* ✅ OUR PORTFOLIO — updated to match screenshot + WORKING arrows + multiple images */}
-      <section className="relative bg-background overflow-hidden">
-        {/* Right light bar behind vertical text */}
-        <div className="pointer-events-none absolute right-0 top-0 h-full w-[110px] bg-slate-100/70" />
+      {/* Portfolio Section */}
+      <section className="section-padding bg-background relative overflow-hidden">
+        <div className="container-custom">
+          <h2 className="text-3xl md:text-4xl font-bold text-primary text-center mb-12">
+            Our Portfolio
+          </h2>
 
-        <div className="container-custom relative pt-16 pb-20">
-          {/* Keep content away from the right bar */}
-          <div className="pr-[140px]">
-            {/* Title row + arrows */}
-            <div className="flex items-start justify-between">
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-800">Our Portfolio</h2>
-
-              <div className="flex gap-2 mt-1">
-                <button
-                  aria-label="Previous"
-                  onClick={handlePrevPortfolio}
-                  className="w-9 h-9 rounded-full bg-[#0b2f5a] text-white flex items-center justify-center hover:opacity-90 transition"
-                >
-                  <ChevronLeft className="w-5 h-5" />
-                </button>
-
-                <button
-                  aria-label="Next"
-                  onClick={handleNextPortfolio}
-                  className="w-9 h-9 rounded-full bg-[#0b2f5a] text-white flex items-center justify-center hover:opacity-90 transition"
-                >
-                  <ChevronRight className="w-5 h-5" />
-                </button>
-              </div>
+          <div className="relative">
+            {/* Navigation Arrows - Top Right */}
+            <div className="absolute -top-12 right-0 flex gap-2 z-10">
+              <button className="w-10 h-10 bg-background border border-border shadow-sm rounded-full flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-colors">
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button className="w-10 h-10 bg-background border border-border shadow-sm rounded-full flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-colors">
+                <ChevronRight className="w-5 h-5" />
+              </button>
             </div>
 
-            {/* Slider */}
-            <div className="mt-10 overflow-hidden">
-              <div
-                className="flex transition-transform duration-700 ease-in-out"
-                style={{ transform: `translateX(-${portfolioIndex * 100}%)` }}
+            {/* Portfolio Grid Image */}
+            <div className="rounded-2xl overflow-hidden shadow-lg">
+              <img 
+                src={portfolioGrid} 
+                alt="Our Portfolio" 
+                className="w-full h-auto object-cover"
+              />
+            </div>
+
+            {/* Vertical PORTFOLIO Text - Right Side */}
+            <div className="hidden lg:block absolute -right-20 top-1/2 -translate-y-1/2 pointer-events-none">
+              <span 
+                className="text-[120px] font-bold text-muted/10 tracking-wider uppercase"
+                style={{ writingMode: 'vertical-rl' }}
               >
-                {portfolioSlides.map((slide, slideIndex) => (
-                  <div key={slideIndex} className="w-full flex-shrink-0">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                      {slide.map((img, imgIndex) => (
-                        <div
-                          key={imgIndex}
-                          className="rounded-xl overflow-hidden bg-white shadow-sm border border-slate-100 hover:shadow-md transition"
-                        >
-                          <img
-                            src={img}
-                            alt={`Portfolio ${slideIndex}-${imgIndex}`}
-                            className="w-full h-[230px] object-cover"
-                            draggable={false}
-                          />
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
+                PORTFOLIO
+              </span>
             </div>
           </div>
-        </div>
-
-        {/* Vertical PORTFOLIO text */}
-        <div className="pointer-events-none absolute right-[10px] top-1/2 -translate-y-1/2">
-          <span
-            className="text-[92px] md:text-[110px] font-extrabold tracking-[0.22em] uppercase text-slate-300/90"
-            style={{ writingMode: 'vertical-rl' as any }}
-          >
-            PORTFOLIO
-          </span>
         </div>
       </section>
 
       {/* Key USP Strip - Dark Blue Rounded Pill */}
       <section className="py-12">
-  {/* Full width strip like screenshot */}
-  <div className="w-full">
-    <div
-      className="
-        bg-primary
-        py-12
-        pl-10 sm:pl-14 lg:pl-16
-        pr-10 sm:pr-14 lg:pr-20
-        rounded-r-[999px]
-        rounded-l-none
-        shadow-xl
-        relative
-      "
-    >
-      {/* Title row with left line */}
-      <div className="flex items-center gap-5 mb-10">
-        <span className="h-[2px] w-12 bg-primary-foreground/90" />
-        <h3 className="text-primary-foreground text-2xl md:text-3xl font-bold">
-          Key USPs DP Promises:
-        </h3>
-      </div>
-
-      {/* Icons row */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-14">
-        {uspItems.map((item, index) => (
-          <div key={index} className="flex flex-col items-start">
-            <div className="w-16 h-16 rounded-full bg-primary-foreground/10 flex items-center justify-center mb-4">
-              <item.icon className="w-7 h-7 text-primary-foreground" />
-            </div>
-            <p className="text-primary-foreground font-semibold text-sm md:text-[15px] leading-snug">
-              {item.title}
+        <div className="container-custom">
+          <div className="bg-primary rounded-[50px] py-10 px-8 md:px-16 shadow-xl">
+            <p className="text-primary-foreground/70 text-center text-sm mb-8 tracking-wide">
+              Key USPs DP Promises:
             </p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              {uspItems.map((item, index) => (
+                <div key={index} className="flex flex-col items-center text-center">
+                  <div className="w-16 h-16 bg-primary-foreground/10 border border-primary-foreground/20 rounded-full flex items-center justify-center mb-4">
+                    <item.icon className="w-7 h-7 text-primary-foreground" />
+                  </div>
+                  <span className="text-primary-foreground text-sm font-medium leading-tight">{item.title}</span>
+                </div>
+              ))}
+            </div>
           </div>
-        ))}
-      </div>
-    </div>
-  </div>
-</section>
+        </div>
+      </section>
 
       {/* Platforms + Design Modes Section */}
-      <section className="bg-background py-20">
-  <div className="container-custom">
-    {/* top dotted line (center) */}
-    <div className="flex justify-center mb-10">
-      <div className="h-12 border-l-2 border-dashed border-slate-300" />
-    </div>
-
-    {/* Platforms */}
-    <div className="text-center">
-      <h3 className="text-3xl md:text-4xl font-bold text-[#1f3b6a] mb-12">
-        Platform DP Loves To Work:
-      </h3>
-
-      <div className="flex flex-col md:flex-row items-center justify-center gap-14 md:gap-28">
-        {platforms.map((platform, index) => (
-          <div key={index} className="flex flex-col items-center">
-            {/* Double ring */}
-            <div className="w-28 h-28 rounded-full bg-white border-2 border-slate-200 flex items-center justify-center">
-              <div className="w-20 h-20 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center">
-                {/* icon */}
-                <platform.icon className="w-10 h-10 text-[#1f3b6a]" />
-              </div>
-            </div>
-
-            <div className="mt-6 text-sm font-extrabold tracking-wide text-slate-900 uppercase">
-              {platform.name}
+      <section className="section-padding bg-background">
+        <div className="container-custom">
+          {/* Platforms Row */}
+          <div className="text-center mb-12">
+            <h3 className="text-xl font-semibold text-primary mb-10">
+              Platform DP Loves To Work:
+            </h3>
+            <div className="flex justify-center items-center gap-16 md:gap-28">
+              {platforms.map((platform, index) => (
+                <div key={index} className="flex flex-col items-center">
+                  <div className="w-20 h-20 bg-secondary border border-border rounded-full flex items-center justify-center mb-4 shadow-sm hover:shadow-md transition-shadow">
+                    <platform.icon className="w-10 h-10 text-primary" />
+                  </div>
+                  <span className="text-sm font-semibold text-primary tracking-wide">{platform.name}</span>
+                </div>
+              ))}
             </div>
           </div>
-        ))}
-      </div>
-    </div>
 
-    {/* middle dotted line */}
-    <div className="flex justify-center my-14">
-      <div className="h-14 border-l-2 border-dashed border-slate-300" />
-    </div>
+          {/* Dotted Vertical Divider */}
+          <div className="flex justify-center my-12">
+            <div className="border-l-2 border-dashed border-muted h-20" />
+          </div>
 
-    {/* Design Modes */}
-    <div className="text-center">
-      <h3 className="text-3xl md:text-4xl font-bold text-[#1f3b6a] mb-12">
-        Design Modes DP Recommends
-      </h3>
-
-      <div className="flex flex-col md:flex-row items-center justify-center gap-14 md:gap-40">
-        {designModes.map((mode, index) => (
-          <div key={index} className="flex flex-col items-center">
-            {/* Double ring */}
-            <div className="w-28 h-28 rounded-full bg-white border-2 border-slate-200 flex items-center justify-center">
-              <div className="w-20 h-20 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center">
-                {/* icon */}
-                <mode.icon className="w-10 h-10 text-[#1f3b6a]" />
-              </div>
-            </div>
-
-            <div className="mt-6 text-sm font-extrabold tracking-wide text-slate-900 uppercase">
-              {mode.name}
+          {/* Design Modes Row */}
+          <div className="text-center">
+            <h3 className="text-xl font-semibold text-primary mb-10">
+              Design Modes DP Recommends
+            </h3>
+            <div className="flex justify-center items-center gap-16 md:gap-28">
+              {designModes.map((mode, index) => (
+                <div key={index} className="flex flex-col items-center">
+                  <div className="w-20 h-20 bg-secondary border border-border rounded-full flex items-center justify-center mb-4 shadow-sm hover:shadow-md transition-shadow">
+                    <mode.icon className="w-10 h-10 text-primary" />
+                  </div>
+                  <span className="text-sm font-semibold text-primary tracking-wide">{mode.name}</span>
+                </div>
+              ))}
             </div>
           </div>
-        ))}
-      </div>
-    </div>
-  </div>
-</section>
+        </div>
+      </section>
 
       {/* Landing Page Brief Section - Image Right, Card Left */}
-      <section className="bg-background py-20">
-  <div className="container-custom">
-    <div className="relative min-h-[420px] lg:min-h-[520px]">
-      {/* RIGHT SIDE: Brochure Collage Background */}
-      <div className="absolute right-0 top-0 w-full lg:w-[74%] h-[420px] lg:h-[520px] overflow-hidden">
-        {/* big base image */}
-        <img
-          src={landingCollage}
-          alt="Brochure collage"
-          className="w-full h-full object-cover"
-        />
+      <section className="section-padding bg-background">
+        <div className="container-custom">
+          <div className="relative">
+            {/* Background Image - Right Side 70% */}
+            <div className="ml-auto w-full lg:w-[70%] aspect-[16/9] rounded-2xl overflow-hidden shadow-lg">
+              <img 
+                src={landingCollage} 
+                alt="Landing Page Portfolio" 
+                className="w-full h-full object-cover"
+              />
+            </div>
 
-        {/* subtle overlay (like screenshot) */}
-        <div className="absolute inset-0 bg-white/10" />
-
-        {/* dotted decoration (right side) */}
-        <div className="absolute right-6 top-10 grid grid-cols-4 gap-2 opacity-60">
-          {Array.from({ length: 16 }).map((_, i) => (
-            <span key={i} className="w-1.5 h-1.5 bg-slate-900/20" />
-          ))}
+            {/* Floating White Card - Left Side */}
+            <div className="lg:absolute lg:left-0 lg:top-1/2 lg:-translate-y-1/2 mt-6 lg:mt-0 lg:w-[45%]">
+              <div className="bg-background rounded-2xl p-8 md:p-10 shadow-xl border border-border">
+                <h3 className="text-2xl md:text-3xl font-bold text-primary mb-5">Landing Page Brief and Ideation</h3>
+                <p className="text-muted-foreground leading-relaxed mb-6">
+                  We specialize in creating high-converting landing pages that capture your audience's attention and drive measurable results. Our strategic approach combines compelling design with data-driven optimization to maximize your ROI and business growth.
+                </p>
+                <Link 
+                  to="/contact" 
+                  className="inline-flex items-center gap-2 text-accent hover:text-accent/80 font-semibold transition-colors"
+                >
+                  Get Started
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
-
-        {/* extra brochure images layered (like screenshot) */}
-        <img
-          src={brochure1}
-          alt="Brochure 1"
-          className="hidden lg:block absolute left-[16%] top-[12%] w-[38%] shadow-xl"
-        />
-        <img
-          src={brochure2}
-          alt="Brochure 2"
-          className="hidden lg:block absolute left-[42%] top-[18%] w-[38%] shadow-xl"
-        />
-        <img
-          src={brochure3}
-          alt="Brochure 3"
-          className="hidden lg:block absolute left-[58%] top-[10%] w-[34%] shadow-xl"
-        />
-      </div>
-
-      {/* LEFT CARD: Sharp edges + heavy shadow */}
-      <div className="relative z-10 w-full lg:w-[46%] pt-10 lg:pt-0">
-        <div
-          className="bg-white border border-slate-200 shadow-[0_18px_45px_rgba(0,0,0,0.25)] p-10"
-          style={{ borderRadius: 0 }} // ✅ sharp edges like screenshot
-        >
-          <h3 className="text-4xl font-extrabold text-[#1f3b6a] leading-tight mb-6">
-            Landing Page Brief and <br />
-            Ideation
-          </h3>
-
-          <p className="text-slate-700 leading-relaxed text-[15px] mb-8">
-            Both landing page briefing and ideation are two integral parts of the designing
-            procedure. The designers at Digital Piloto are extremely careful about completing
-            all the basics related to designs. They have in-depth knowledge of all the necessary
-            tools and designing software that helps them create the best quality of designs.
-            Their expertise makes us a leading{" "}
-            <span className="text-blue-600 underline">website development company</span>.
-          </p>
-
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-700 transition"
-          >
-            Get Started <ArrowRight className="w-4 h-4" />
-          </Link>
-        </div>
-      </div>
-
-      {/* keeps left card aligned vertically like screenshot */}
-      <div className="hidden lg:block h-[520px]" />
-    </div>
-  </div>
-</section>
-
+      </section>
 
       {/* Capabilities Section - Content Left, Portrait Right */}
-      {/* <section className="section-padding bg-secondary">
+      <section className="section-padding bg-secondary">
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left - Content */}
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-primary mb-8 uppercase tracking-wide">
-                Know Sanjay&apos;s Capabilities
+                Know Sanjay's Capabilities
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {capabilities.map((capability, index) => (
@@ -430,8 +236,8 @@ const DesignDevelopment = () => {
                   </div>
                 ))}
               </div>
-              <Link
-                to="/contact"
+              <Link 
+                to="/contact" 
                 className="inline-flex items-center gap-2 mt-10 bg-primary text-primary-foreground px-8 py-3.5 rounded-lg font-semibold hover:bg-primary/90 transition-colors shadow-md"
               >
                 Work With Us
@@ -439,27 +245,32 @@ const DesignDevelopment = () => {
               </Link>
             </div>
 
+            {/* Right - Portrait Frame */}
             <div className="flex justify-center lg:justify-end">
               <div className="w-72 md:w-80 aspect-[3/4] rounded-2xl overflow-hidden shadow-xl border-4 border-background">
-                <img src={sanjayPortrait} alt="Sanjay - Project Lead" className="w-full h-full object-cover" />
+                <img 
+                  src={sanjayPortrait} 
+                  alt="Sanjay - Project Lead" 
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* Dark Blue Split Band - FAQs + Career */}
       <section className="bg-primary py-16">
         <div className="container-custom">
           <div className="grid md:grid-cols-2">
+            {/* Left Column - FAQs */}
             <div className="text-primary-foreground pr-0 md:pr-12 pb-8 md:pb-0 md:border-r md:border-primary-foreground/20">
               <h3 className="text-2xl font-bold mb-4">Frequently Asked Questions (FAQs)</h3>
               <p className="text-primary-foreground/70 mb-6 leading-relaxed">
-                We enjoy educating people on the intricacies of web design and development. Every day, we
-                receive questions from clients about our process and capabilities.
+                We enjoy educating people on the intricacies of web design and development. Every day, we receive questions from clients about our process and capabilities.
               </p>
-              <Link
-                to="/contact"
+              <Link 
+                to="/contact" 
                 className="inline-flex items-center gap-2 text-accent hover:text-accent/80 font-semibold underline underline-offset-4 transition-colors"
               >
                 Learn More
@@ -467,14 +278,14 @@ const DesignDevelopment = () => {
               </Link>
             </div>
 
+            {/* Right Column - Career */}
             <div className="text-primary-foreground pl-0 md:pl-12 pt-8 md:pt-0 border-t md:border-t-0 border-primary-foreground/20">
               <h3 className="text-2xl font-bold mb-4">Wanna Rewarding Career?</h3>
               <p className="text-primary-foreground/70 mb-6 leading-relaxed">
-                Join our team of creative experts if you value innovative design and structured development.
-                We appreciate a proactive mindset and strong technical skills.
+                Join our team of creative experts if you value innovative design and structured development. We appreciate a proactive mindset and strong technical skills.
               </p>
-              <Link
-                to="/contact"
+              <Link 
+                to="/contact" 
                 className="inline-flex items-center gap-2 text-accent hover:text-accent/80 font-semibold underline underline-offset-4 transition-colors"
               >
                 Join Our Team
@@ -492,8 +303,8 @@ const DesignDevelopment = () => {
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary-foreground mb-6 leading-tight">
               Looking for The Assistance Of Industry-Best Professionals?
             </h2>
-            <Link
-              to="/contact"
+            <Link 
+              to="/contact" 
               className="inline-flex items-center gap-2 text-accent hover:text-accent/80 font-semibold underline underline-offset-4 text-lg transition-colors"
             >
               Reach us Online or Schedule An Appointment To A Live Call!
@@ -504,7 +315,71 @@ const DesignDevelopment = () => {
       </section>
 
       {/* Footer Section - Logo + Newsletter + Links + Social */}
-     
+      <section className="bg-background py-16 border-t border-border">
+        <div className="container-custom">
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* Left Side - Logo + Newsletter */}
+            <div>
+              <Link to="/" className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-accent rounded-xl flex items-center justify-center shadow-md">
+                  <Send className="w-6 h-6 text-accent-foreground" />
+                </div>
+                <span className="text-2xl font-bold text-primary">
+                  digital<span className="text-accent">piloto</span>
+                </span>
+              </Link>
+              
+              <p className="text-primary font-semibold text-lg mb-2">Subscribe To Our Newsletter!</p>
+              <p className="text-muted-foreground text-sm mb-6">Stay updated with the latest web design trends, development insights, and exclusive offers.</p>
+              
+              <div className="flex max-w-md">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="px-5 py-3 rounded-l-xl bg-secondary border border-r-0 border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent flex-1"
+                />
+                <button className="px-6 py-3 bg-accent text-accent-foreground rounded-r-xl hover:bg-accent/90 transition-colors flex items-center gap-2 font-semibold shadow-md">
+                  <Send className="w-4 h-4" />
+                  Subscribe
+                </button>
+              </div>
+            </div>
+
+            {/* Right Side - Links + Social */}
+            <div className="lg:text-right">
+              {/* Footer Links Row */}
+              <div className="flex flex-wrap gap-6 lg:justify-end mb-8">
+                <Link to="/disclaimer" className="text-muted-foreground hover:text-accent transition-colors text-sm font-medium">Disclaimer</Link>
+                <Link to="/contact" className="text-muted-foreground hover:text-accent transition-colors text-sm font-medium">Contact Us</Link>
+                <Link to="/sitemap" className="text-muted-foreground hover:text-accent transition-colors text-sm font-medium">Sitemap</Link>
+                <Link to="/blog" className="text-muted-foreground hover:text-accent transition-colors text-sm font-medium">Knowledge Hub</Link>
+                <Link to="/privacy" className="text-muted-foreground hover:text-accent transition-colors text-sm font-medium">Privacy Policy</Link>
+              </div>
+
+              {/* Social Icons Row */}
+              <div className="flex items-center gap-3 lg:justify-end">
+                {socialLinks.map((social, index) => (
+                  <a
+                    key={index}
+                    href={social.href}
+                    aria-label={social.label}
+                    className="w-11 h-11 rounded-full bg-secondary border border-border flex items-center justify-center hover:bg-accent hover:border-accent transition-colors group"
+                  >
+                    <social.icon className="w-5 h-5 text-muted-foreground group-hover:text-accent-foreground transition-colors" />
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Divider + Copyright */}
+          <div className="border-t border-border mt-12 pt-8 text-center">
+            <p className="text-sm text-muted-foreground">
+              © {new Date().getFullYear()} Digital Piloto. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </section>
     </Layout>
   );
 };
