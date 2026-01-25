@@ -61,98 +61,76 @@ const Home = () => {
   ];
 
   const resourceBoxItems = [
-    {
-      title: 'Trade Shows Are Back: Integrate Digital Marketing for Maximum ROI',
-      author: 'Sanjay Dhar',
-      date: '12 Jan 2026',
-    },
-    {
-      title: 'Top 7 Social Media Strategies That Actually Work for Schools',
-      author: 'Sanjay Dhar',
-      date: '02 Jan 2026',
-    },
-    {
-      title: 'The Hidden Power of Healthcare Branding: More than Just a Logo',
-      author: 'Sanjay Dhar',
-      date: '25 Dec 2025',
-    },
-    {
-      title: 'Personalised Marketing in EdTech: Meeting Learners Where They Are',
-      author: 'Amlan Maiti',
-      date: '12 Dec 2025',
-    },
-    {
-      title: 'LinkedIn for Manufacturers: Turning Connections Into Contracts',
-      author: 'Sanjay Dhar',
-      date: '02 Dec 2025',
-    },
-    {
-      title: 'Designing for the Algorithm: How to Make Your Interior Design Work Go Viral',
-      author: 'Sanjay Dhar',
-      date: '25 Nov 2025',
-    },
+    { title: 'Trade Shows Are Back: Integrate Digital Marketing for Maximum ROI', author: 'Sanjay Dhar', date: '12 Jan 2026' },
+    { title: 'Top 7 Social Media Strategies That Actually Work for Schools', author: 'Sanjay Dhar', date: '02 Jan 2026' },
+    { title: 'The Hidden Power of Healthcare Branding: More than Just a Logo', author: 'Sanjay Dhar', date: '25 Dec 2025' },
+    { title: 'Personalised Marketing in EdTech: Meeting Learners Where They Are', author: 'Amlan Maiti', date: '12 Dec 2025' },
+    { title: 'LinkedIn for Manufacturers: Turning Connections Into Contracts', author: 'Sanjay Dhar', date: '02 Dec 2025' },
+    { title: 'Designing for the Algorithm: How to Make Your Interior Design Work Go Viral', author: 'Sanjay Dhar', date: '25 Nov 2025' },
   ];
 
   const faqs = [
-    {
-      question: 'What makes Digital Piloto different from other SEO agencies?',
-      answer: 'We combine data-driven strategies with creative solutions, offering complete transparency and measurable results. Our team has helped hundreds of businesses achieve top rankings.',
-    },
-    {
-      question: 'How long does it take to see SEO results?',
-      answer: 'SEO is a long-term investment. While some improvements can be seen within 3-6 months, significant results typically appear after 6-12 months of consistent effort.',
-    },
-    {
-      question: 'Do you offer customized SEO packages?',
-      answer: 'Yes! We understand every business is unique. We create tailored SEO strategies based on your specific goals, industry, and budget.',
-    },
-    {
-      question: 'What industries do you serve?',
-      answer: 'We work with businesses across various industries including e-commerce, healthcare, technology, finance, education, and more.',
-    },
+    { question: 'What makes Digital Piloto different from other SEO agencies?', answer: 'We combine data-driven strategies with creative solutions, offering complete transparency and measurable results. Our team has helped hundreds of businesses achieve top rankings.' },
+    { question: 'How long does it take to see SEO results?', answer: 'SEO is a long-term investment. While some improvements can be seen within 3-6 months, significant results typically appear after 6-12 months of consistent effort.' },
+    { question: 'Do you offer customized SEO packages?', answer: 'Yes! We understand every business is unique. We create tailored SEO strategies based on your specific goals, industry, and budget.' },
+    { question: 'What industries do you serve?', answer: 'We work with businesses across various industries including e-commerce, healthcare, technology, finance, education, and more.' },
   ];
 
   return (
     <Layout>
-      {/* Hero Section - Dark Blue with 3D Cube Image */}
-      <section className="relative min-h-[80vh] flex items-center overflow-hidden">
-        {/* Background Image */}
+      {/* ✅ HERO SECTION — Updated to match screenshot */}
+      <section className="relative min-h-[82vh] overflow-hidden bg-[#062a48]">
+        {/* Background image (the banner that contains cube + diagonal pattern) */}
         <div className="absolute inset-0">
-          <img 
-            src={heroBanner} 
-            alt="Digital Piloto Hero" 
-            className="w-full h-full object-cover"
+          <img
+            src={heroBanner}
+            alt="Digital Piloto Hero"
+            className="w-full h-full object-cover object-left"
           />
-          <div className="absolute inset-0 bg-primary/60" />
+          {/* Dark overlay (keep image visible like screenshot) */}
+          <div className="absolute inset-0 bg-[#062a48]/40" />
         </div>
-        
-        <div className="container-custom relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left side - Space for cube (already in image) */}
-            <div className="hidden lg:block" />
 
-            {/* Right side - Text Content */}
-            <div className="text-primary-foreground">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                Build Your Brand's Voice<br />
-                With Robust Digital Strategies!
-              </h1>
-              <p className="text-primary-foreground/80 text-lg mb-8 leading-relaxed max-w-xl">
-                Our team of innovative, flexible, & dynamic digital marketing experts leaves no stone unturned to bring your business the desired results. Trust us to make your business grow!
-              </p>
-              <Link 
-                to="/about/company-info" 
-                className="inline-flex items-center gap-2 text-accent hover:text-accent/80 font-semibold text-lg transition-colors"
-              >
-                Explore Opportunities
-                <ArrowRight className="w-5 h-5" />
-              </Link>
+        {/* Top-center paper plane icon (like screenshot) */}
+        <div className="absolute top-6 left-1/2 -translate-x-1/2 z-20">
+          <div className="w-9 h-9 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center">
+            <span className="text-white text-lg">✈️</span>
+          </div>
+        </div>
 
-              {/* Slider dots */}
-              <div className="flex gap-2 mt-12">
-                <span className="w-8 h-1 bg-primary-foreground/30 rounded" />
-                <span className="w-8 h-1 bg-primary-foreground/30 rounded" />
-                <span className="w-8 h-1 bg-accent rounded" />
+        {/* Content */}
+        <div className="relative z-10 h-full">
+          <div className="container-custom h-full">
+            <div className="grid lg:grid-cols-2 h-full items-center gap-12 py-20">
+              {/* Left side kept empty because banner image already has cube */}
+              <div className="hidden lg:block" />
+
+              {/* Right side text (aligned like screenshot) */}
+              <div className="text-white max-w-xl ml-auto">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                  Build Your Brand’s Voice
+                  <br />
+                  With Robust Digital Strategies!
+                </h1>
+
+                <p className="mt-6 text-white/80 text-base md:text-lg leading-relaxed">
+                  Our team of innovative, flexible, &amp; dynamic digital marketing experts leaves no stone unturned to bring your business the desired results. Trust us to make your business grow!
+                </p>
+
+                <Link
+                  to="/about/company-info"
+                  className="mt-8 inline-flex items-center gap-2 text-white font-medium hover:text-orange-400 transition-colors"
+                >
+                  Explore Opportunities
+                  <ArrowRight className="w-5 h-5 text-orange-400" />
+                </Link>
+
+                {/* Slider lines (bottom-right like screenshot) */}
+                <div className="absolute bottom-12 right-10 hidden md:flex items-center gap-2">
+                  <span className="w-8 h-[3px] rounded bg-white/40" />
+                  <span className="w-8 h-[3px] rounded bg-white/40" />
+                  <span className="w-8 h-[3px] rounded bg-orange-500" />
+                </div>
               </div>
             </div>
           </div>
@@ -163,7 +141,6 @@ const Home = () => {
       <section className="section-padding bg-background">
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left - Text */}
             <div>
               <span className="text-sm font-semibold text-muted-foreground tracking-wider uppercase mb-4 block">
                 ABOUT US
@@ -171,20 +148,19 @@ const Home = () => {
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6 leading-tight">
                 Bespoke Digital Marketing Services And Consultancy To Get Your Business Covered!
               </h2>
-              <Link 
-                to="/about/company-info" 
+              <Link
+                to="/about/company-info"
                 className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-md font-semibold hover:bg-primary/90 transition-colors"
               >
                 KNOW MORE
               </Link>
             </div>
 
-            {/* Right - Business Meeting Image */}
             <div className="relative">
               <div className="rounded-xl overflow-hidden shadow-lg aspect-[4/3]">
-                <img 
-                  src={aboutMeeting} 
-                  alt="Business Meeting" 
+                <img
+                  src={aboutMeeting}
+                  alt="Business Meeting"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -225,7 +201,6 @@ const Home = () => {
           </p>
 
           <div className="grid lg:grid-cols-12 gap-8 items-center">
-            {/* Left - Vertical Tabs */}
             <div className="lg:col-span-3">
               {verticals.map((vertical) => (
                 <button
@@ -242,18 +217,16 @@ const Home = () => {
               ))}
             </div>
 
-            {/* Center - Image */}
             <div className="lg:col-span-4">
               <div className="rounded-xl overflow-hidden aspect-[4/3]">
-                <img 
-                  src={verticalsHealthcare} 
-                  alt={`${activeVertical} Team`} 
+                <img
+                  src={verticalsHealthcare}
+                  alt={`${activeVertical} Team`}
                   className="w-full h-full object-cover"
                 />
               </div>
             </div>
 
-            {/* Right - Description */}
             <div className="lg:col-span-5">
               <h3 className="text-accent font-bold text-lg mb-4 uppercase">
                 WE TARGET THE TOP-SPOT FOR YOU
@@ -261,8 +234,8 @@ const Home = () => {
               <p className="text-muted-foreground leading-relaxed mb-6">
                 {verticals.find(v => v.name === activeVertical)?.description}
               </p>
-              <Link 
-                to="/about/company-info" 
+              <Link
+                to="/about/company-info"
                 className="inline-flex items-center gap-2 text-primary font-semibold underline hover:text-accent transition-colors"
               >
                 Explore Opportunities
@@ -275,25 +248,22 @@ const Home = () => {
 
       {/* Serving Global Community Section */}
       <section className="relative py-20 overflow-hidden">
-        {/* Background Image */}
         <div className="absolute inset-0">
-          <img 
-            src={globalMap} 
-            alt="Global Coverage" 
+          <img
+            src={globalMap}
+            alt="Global Coverage"
             className="w-full h-full object-cover"
           />
         </div>
-        
+
         <div className="container-custom relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left - Space for map (already in image) */}
             <div className="hidden lg:block" />
 
-            {/* Right - Country List Card */}
             <div className="bg-background rounded-2xl p-8 shadow-lg">
               <h3 className="text-xl font-bold text-primary mb-2">SERVING THE GLOBAL COMMUNITY!</h3>
               <p className="text-accent text-sm mb-6 leading-relaxed">
-                Digital Piloto has earned confidence via prowess, R&D, and technical know-how that can benefit top businesses covering any geographic location! Our cross-industry knowledge is our strength that we enforce while we work for our global clients!
+                Digital Piloto has earned confidence via prowess, R&amp;D, and technical know-how that can benefit top businesses covering any geographic location! Our cross-industry knowledge is our strength that we enforce while we work for our global clients!
               </p>
               <div className="grid grid-cols-3 gap-3">
                 {countries.map((country) => (
@@ -314,12 +284,12 @@ const Home = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-primary text-center mb-12">
             Trusted by our Clients
           </h2>
-          
+
           <div className="relative">
             <button className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-background shadow-md rounded-full flex items-center justify-center text-muted-foreground hover:text-primary transition-colors">
               <ChevronLeft className="w-5 h-5" />
             </button>
-            
+
             <div className="flex items-center justify-center gap-8 overflow-hidden px-12">
               {clientLogos.map((logo, index) => (
                 <div key={index} className="flex-shrink-0 w-32 h-16 bg-secondary rounded-lg flex items-center justify-center">
@@ -333,7 +303,6 @@ const Home = () => {
             </button>
           </div>
 
-          {/* Dots */}
           <div className="flex justify-center gap-2 mt-8">
             <span className="w-2 h-2 bg-muted rounded-full" />
             <span className="w-2 h-2 bg-accent rounded-full" />
@@ -348,13 +317,12 @@ const Home = () => {
             Resource Box
           </h2>
           <p className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto">
-            Our box is no less than Pandora's Box as it contains valuable information that can serve every business before it goes for promoting their business online.
+            Our box is no less than Pandora&apos;s Box as it contains valuable information that can serve every business before it goes for promoting their business online.
           </p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {resourceBoxItems.map((item, index) => (
               <div key={index} className="bg-background rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow group">
-                {/* Card Image */}
                 <div className="relative aspect-[16/10] bg-gradient-to-br from-primary to-primary/80">
                   <div className="absolute inset-0 flex items-center justify-center p-6">
                     <div className="text-primary-foreground text-center">
@@ -362,7 +330,6 @@ const Home = () => {
                       <h4 className="font-bold text-sm leading-snug">{item.title}</h4>
                     </div>
                   </div>
-                  {/* Author badge */}
                   <div className="absolute bottom-4 right-4 bg-background rounded-lg p-2 shadow">
                     <div className="flex items-center gap-2">
                       <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center">
@@ -375,8 +342,7 @@ const Home = () => {
                     </div>
                   </div>
                 </div>
-                
-                {/* Card Footer */}
+
                 <div className="p-4">
                   <div className="flex items-center gap-4 text-xs text-muted-foreground mb-2">
                     <span>📅 {item.date}</span>
@@ -392,13 +358,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* FAQ Section */}
       <FAQSection faqs={faqs} />
-
-      {/* Career Banner */}
       <CareerBanner />
-
-      {/* CTA Section */}
       <CTASection />
     </Layout>
   );

@@ -1,90 +1,95 @@
-import { Link } from 'react-router-dom';
-import { ArrowRight, Send } from 'lucide-react';
-import Layout from '@/components/layout/Layout';
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
+import Layout from "@/components/layout/Layout";
 
-// Import images
-import aboutFamily from '@/assets/about-family.jpg';
-import aboutOneness from '@/assets/about-oneness.jpg';
-import aboutSatisfaction from '@/assets/about-satisfaction.jpg';
-import aboutRevenue from '@/assets/about-revenue.jpg';
-import aboutNetwork from '@/assets/about-network.jpg';
-import aboutImprovement from '@/assets/about-improvement.jpg';
-import missionBg from '@/assets/about-mission-bg.jpg';
-import visionBg from '@/assets/about-vision-bg.jpg';
+// ✅ Import your images (replace with your actual paths)
+import aboutFamily from "@/assets/about-family.jpg";
+import aboutOneness from "@/assets/about-oneness.jpg";
+import aboutSatisfaction from "@/assets/about-satisfaction.jpg";
+import aboutRevenue from "@/assets/about-revenue.jpg";
+import aboutNetwork from "@/assets/about-network.jpg";
+import aboutImprovement from "@/assets/about-improvement.jpg";
+import missionBg from "@/assets/about-mission-bg.jpg";
+import visionBg from "@/assets/about-vision-bg.jpg";
 
 const CompanyInfo = () => {
+  // ✅ EXACT ORDER (as you said): About Us → Our Mission → Our Vision → Dark Blue Band → CTA → Footer Strip
   const aboutUsItems = [
-    { image: aboutFamily, text: 'Feeling of one-family under the same roof' },
-    { image: aboutOneness, text: 'Employees feel oneness in the company' },
-    { image: aboutSatisfaction, text: 'Client satisfaction is the key' },
-    { image: aboutRevenue, text: 'Assured revenue growth for everyone' },
-    { image: aboutNetwork, text: 'The GxPify network grows stronger' },
-    { image: aboutImprovement, text: 'Continuous improvement culture' },
-  ];
-
-  const numberedPoints = [
-    'Passion drives our work',
-    'Pace ensures timely delivery',
-    'Precision guarantees quality',
-    'Transparency builds trust',
-    'Innovation leads growth',
-    'Excellence defines us',
+    { image: aboutFamily, text: "Feeling Of One-Family Under The Same Roof!" },
+    { image: aboutOneness, text: "Employees Feel Oneness In The Company" },
+    { image: aboutSatisfaction, text: "Client Satisfaction Is The Key!" },
+    { image: aboutRevenue, text: "Assured Revenue Growth For Everyone!" },
+    { image: aboutNetwork, text: "The DP Family Grows As Well!" },
+    { image: aboutImprovement, text: "...The Party Continues!" },
   ];
 
   return (
     <Layout>
-      {/* About Us Section - 6 Image Grid */}
-      <section className="section-padding bg-background">
+      {/* =========================
+          1) ABOUT US (6 Image Grid)
+         ========================= */}
+      <section className="bg-background py-14 md:py-16">
         <div className="container-custom">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary text-center mb-12">
+          <h2 className="text-center font-serif text-3xl md:text-4xl font-semibold text-foreground mb-10">
             About Us
           </h2>
 
-          {/* Main White Container with Lavender Border */}
-          <div className="bg-background border-2 border-purple-soft rounded-3xl p-8 md:p-12 shadow-lg">
-            {/* First Row - 3 Images */}
-            <div className="grid md:grid-cols-3 gap-6 mb-8">
-              {aboutUsItems.slice(0, 3).map((item, index) => (
-                <div key={index} className="text-center">
-                  <div className="bg-background rounded-xl shadow-md overflow-hidden mb-4 aspect-[4/3]">
-                    <img 
-                      src={item.image} 
-                      alt={item.text} 
-                      className="w-full h-full object-cover"
-                    />
+          {/* White Container + Lavender border + shadow */}
+          <div className="bg-background border-[6px] border-[#cbbcff] rounded-[28px] shadow-[0_18px_45px_rgba(0,0,0,0.08)] p-6 md:p-10">
+            {/* Row 1 */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {aboutUsItems.slice(0, 3).map((item, i) => (
+                <div key={i} className="text-center">
+                  <div className="overflow-hidden rounded-xl bg-white shadow-md">
+                    <div className="aspect-[16/9]">
+                      <img
+                        src={item.image}
+                        alt={item.text}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    </div>
                   </div>
-                  <p className="text-muted-foreground text-sm font-medium">{item.text}</p>
+
+                  {/* Number strip label style */}
+                  <div className="mt-3 inline-flex items-center gap-3 bg-[#f6d8a9] px-4 py-2 rounded-full shadow-sm">
+                    <span className="w-7 h-7 rounded-full border border-[#8b4b00] text-[#8b4b00] font-semibold text-sm flex items-center justify-center bg-[#ffe6bf]">
+                      {i + 1}
+                    </span>
+                    <span className="text-[#8b1a1a] font-semibold text-sm">
+                      {item.text}
+                    </span>
+                  </div>
                 </div>
               ))}
             </div>
 
-            {/* Numbered Points Strip */}
-            <div className="flex flex-wrap justify-center gap-4 py-6 my-8 border-y border-border">
-              {numberedPoints.map((point, index) => (
-                <div 
-                  key={index} 
-                  className="flex items-center gap-2 bg-secondary/50 rounded-full px-4 py-2"
-                >
-                  <span className="w-6 h-6 bg-accent text-accent-foreground rounded-full flex items-center justify-center text-xs font-bold">
-                    {index + 1}
-                  </span>
-                  <span className="text-sm text-primary font-medium">{point}</span>
-                </div>
-              ))}
-            </div>
+            {/* Middle divider line (like screenshot) */}
+            <div className="my-7 h-[2px] bg-[#cbbcff]" />
 
-            {/* Second Row - 3 Images */}
-            <div className="grid md:grid-cols-3 gap-6">
-              {aboutUsItems.slice(3, 6).map((item, index) => (
-                <div key={index} className="text-center">
-                  <div className="bg-background rounded-xl shadow-md overflow-hidden mb-4 aspect-[4/3]">
-                    <img 
-                      src={item.image} 
-                      alt={item.text} 
-                      className="w-full h-full object-cover"
-                    />
+            {/* Row 2 */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {aboutUsItems.slice(3, 6).map((item, i) => (
+                <div key={i} className="text-center">
+                  <div className="overflow-hidden rounded-xl bg-white shadow-md">
+                    <div className="aspect-[16/9]">
+                      <img
+                        src={item.image}
+                        alt={item.text}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    </div>
                   </div>
-                  <p className="text-muted-foreground text-sm font-medium">{item.text}</p>
+
+                  <div className="mt-3 inline-flex items-center gap-3 bg-[#f6d8a9] px-4 py-2 rounded-full shadow-sm">
+                    <span className="w-7 h-7 rounded-full border border-[#8b4b00] text-[#8b4b00] font-semibold text-sm flex items-center justify-center bg-[#ffe6bf]">
+                      {i + 4}
+                    </span>
+                    <span className="text-[#8b1a1a] font-semibold text-sm">
+                      {item.text}
+                    </span>
+                  </div>
                 </div>
               ))}
             </div>
@@ -92,33 +97,42 @@ const CompanyInfo = () => {
         </div>
       </section>
 
-      {/* Our Belief + Mission Section */}
-      <section className="section-padding bg-background">
+      {/* ==========================================
+          2) OUR MISSION (Our Belief heading on top)
+         ========================================== */}
+      <section className="bg-background py-14 md:py-16">
         <div className="container-custom">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary text-center mb-4">
+          <h2 className="text-center text-3xl md:text-4xl font-semibold text-foreground mb-3">
             Our Belief
           </h2>
-          <p className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto">
-            We believe that every business deserves to be seen and heard in the digital world. Our mission is to bridge the gap between your brand and your audience through innovative digital strategies that drive real results.
+
+          <p className="text-center text-muted-foreground max-w-4xl mx-auto mb-10 leading-relaxed">
+            Professionally, we are versatile when it comes to managing all the technicalities. We
+            believe nothing is impossible till you trust the technology we work with.
           </p>
 
-          {/* Mission Banner with Overlay */}
+          {/* Mission banner layout: image on right, card on left overlapping */}
           <div className="relative">
-            {/* Background Image - 70% width */}
-            <div className="ml-auto w-full lg:w-[70%] aspect-[16/9] rounded-2xl overflow-hidden">
-              <img 
-                src={missionBg} 
-                alt="Our Mission Background" 
-                className="w-full h-full object-cover"
-              />
+            {/* background image block (right aligned like screenshot) */}
+            <div className="w-full lg:w-[74%] ml-auto overflow-hidden">
+              <div className="aspect-[21/9] w-full">
+                <img
+                  src={missionBg}
+                  alt="Mission background"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
             </div>
 
-            {/* Floating Overlay Card - Left Side */}
-            <div className="lg:absolute lg:left-0 lg:top-1/2 lg:-translate-y-1/2 mt-6 lg:mt-0 lg:w-[45%]">
-              <div className="bg-background rounded-2xl p-8 shadow-xl">
-                <h3 className="text-2xl font-bold text-primary mb-4">Our Mission</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  We consider Passion, Pace, and Precision as our pillars to serve our audit clients. Our mission is to deliver governed, scope-disciplined GxP audit execution and defensible outcomes across life-sciences environments.
+            {/* overlay card on left */}
+            <div className="lg:absolute lg:left-0 lg:top-1/2 lg:-translate-y-1/2 mt-6 lg:mt-0 w-full lg:w-[38%]">
+              <div className="bg-white shadow-[0_18px_45px_rgba(0,0,0,0.15)] rounded-sm p-7 md:p-8">
+                <h3 className="text-3xl font-medium text-foreground mb-4">Our Mission</h3>
+                <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
+                  We consider Passion, Pace, and Precision as our pillars to serve our customers.
+                  Our mission is to bring the right advantages you anticipate from us and deliver
+                  consistently.
                 </p>
               </div>
             </div>
@@ -126,26 +140,32 @@ const CompanyInfo = () => {
         </div>
       </section>
 
-      {/* Our Vision Section */}
-      <section className="section-padding bg-background">
+      {/* =========================
+          3) OUR VISION (card right)
+         ========================= */}
+      <section className="bg-background py-14 md:py-16">
         <div className="container-custom">
-          {/* Vision Banner with Overlay */}
           <div className="relative">
-            {/* Background Image - 70% width on left */}
-            <div className="mr-auto w-full lg:w-[70%] aspect-[16/9] rounded-2xl overflow-hidden">
-              <img 
-                src={visionBg} 
-                alt="Our Vision Background" 
-                className="w-full h-full object-cover"
-              />
+            {/* background image block (left aligned like screenshot) */}
+            <div className="w-full lg:w-[74%] mr-auto overflow-hidden">
+              <div className="aspect-[21/9] w-full">
+                <img
+                  src={visionBg}
+                  alt="Vision background"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
             </div>
 
-            {/* Floating Overlay Card - Right Side */}
-            <div className="lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-1/2 mt-6 lg:mt-0 lg:w-[45%]">
-              <div className="bg-background rounded-2xl p-8 shadow-xl">
-                <h3 className="text-2xl font-bold text-primary mb-4">Our Vision</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  At GxPify, our vision is to provide audit outcomes sponsors and audit firms can stand behind — through independent judgment, disciplined scope boundaries, and governance-aligned execution across regulated life-sciences environments.
+            {/* overlay card on right */}
+            <div className="lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-1/2 mt-6 lg:mt-0 w-full lg:w-[40%]">
+              <div className="bg-white shadow-[0_18px_45px_rgba(0,0,0,0.15)] rounded-sm p-7 md:p-8">
+                <h3 className="text-3xl font-medium text-foreground mb-4">Our Vision</h3>
+                <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
+                  Our vision is to bring clients the right value so that expectations are fulfilled,
+                  and to become a trusted provider by anticipating what businesses look for and
+                  demand.
                 </p>
               </div>
             </div>
@@ -153,125 +173,75 @@ const CompanyInfo = () => {
         </div>
       </section>
 
-      {/* Dark Blue Split Band - FAQs + Career */}
-      <section className="bg-primary py-16">
+      {/* ======================================
+          4) DARK BLUE SPLIT BAND (FAQs + Career)
+         ====================================== */}
+      <section className="bg-primary py-14">
         <div className="container-custom">
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Left Column - FAQs */}
-            <div className="text-primary-foreground pr-0 md:pr-8 md:border-r md:border-primary-foreground/20">
-              <h3 className="text-2xl font-bold mb-4">Frequently Asked Questions (FAQs)</h3>
-              <p className="text-primary-foreground/70 mb-6 leading-relaxed">
-                We enjoy educating people on the intricacies of governed audit execution. Every day, we receive questions from sponsors and audit firms.
+          <div className="grid md:grid-cols-2 gap-0">
+            {/* Left */}
+            <div className="text-primary-foreground px-0 md:pr-10 md:border-r md:border-primary-foreground/20">
+              <h3 className="text-2xl md:text-3xl font-semibold mb-2">
+                Frequently Asked Questions (FAQs)
+              </h3>
+              <p className="text-primary-foreground/80 leading-relaxed text-sm md:text-base mb-6 max-w-xl">
+                We enjoy educating people on the intricacies of digital services. Every day, we
+                receive hundreds of questions from our real customers.
               </p>
-              <Link 
-                to="/contact" 
-                className="inline-flex items-center gap-2 text-accent hover:text-accent/80 font-semibold underline transition-colors"
+              <Link
+                to="/faqs"
+                className="inline-flex items-center gap-2 text-primary-foreground underline underline-offset-4 hover:text-accent transition-colors font-medium"
               >
-                Learn More
-                <ArrowRight className="w-4 h-4" />
+                Learn More <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
 
-            {/* Right Column - Career */}
-            <div className="text-primary-foreground pl-0 md:pl-8">
-              <h3 className="text-2xl font-bold mb-4">Wanna Rewarding Career?</h3>
-              <p className="text-primary-foreground/70 mb-6 leading-relaxed">
-                Join our team of experts if you value disciplined audit judgment and structured execution. We appreciate a proactive mindset and strong ethical independence.
+            {/* Right */}
+            <div className="text-primary-foreground mt-10 md:mt-0 md:pl-10">
+              <h3 className="text-2xl md:text-3xl font-semibold mb-2">
+                Wanna Rewarding Career?
+              </h3>
+              <p className="text-primary-foreground/80 leading-relaxed text-sm md:text-base mb-6 max-w-xl">
+                Join our team of experts if you have the urge to show up your potential! We
+                appreciate a proactive measure to make us trust your skills!
               </p>
-              <Link 
-                to="/contact" 
-                className="inline-flex items-center gap-2 text-accent hover:text-accent/80 font-semibold underline transition-colors"
+              <Link
+                to="/careers"
+                className="inline-flex items-center gap-2 text-primary-foreground underline underline-offset-4 hover:text-accent transition-colors font-medium"
               >
-                Join Our Team
-                <ArrowRight className="w-4 h-4" />
+                Join Our Team <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Big CTA Box */}
-      <section className="section-padding bg-background">
+      {/* ==================
+          5) BIG CTA BOX
+         ================== */}
+      <section className="bg-background py-14 md:py-16">
         <div className="container-custom">
-          <div className="bg-primary rounded-3xl p-12 text-center shadow-xl">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary-foreground mb-4">
-              Looking for the Assistance of Industry-Best Professionals?
+          <div className="bg-primary rounded-md shadow-[0_18px_45px_rgba(0,0,0,0.25)] px-6 md:px-10 py-10 text-center max-w-5xl mx-auto">
+            <h2 className="text-primary-foreground text-2xl md:text-3xl font-semibold mb-4">
+              Looking for The Assistance Of Industry-Best Professionals?
             </h2>
-            <Link 
-              to="/contact" 
-              className="inline-flex items-center gap-2 text-accent hover:text-accent/80 font-semibold underline text-lg transition-colors"
+
+            <Link
+              to="/contact"
+              className="inline-flex items-center justify-center gap-2 text-primary-foreground underline underline-offset-4 hover:text-accent transition-colors font-medium"
             >
-              Reach us Online or Schedule an Appointment To A Live Call!
-              <ArrowRight className="w-5 h-5" />
+              Reach us Online or Schedule An Appointment To A Live Call!
+              <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Footer Section (Newsletter + Links) - This supplements the main footer */}
-      <section className="bg-background py-12 border-t border-border">
-        <div className="container-custom">
-          <div className="grid lg:grid-cols-3 gap-8 items-start">
-            {/* Logo + Newsletter */}
-            <div className="lg:col-span-1">
-              <Link to="/" className="flex items-center gap-2 mb-4">
-                <div className="w-10 h-10 bg-accent rounded-lg flex items-center justify-center">
-                  <span className="text-accent-foreground font-bold text-xl">D</span>
-                </div>
-                <span className="text-xl font-bold text-primary">
-                  Digital <span className="text-accent">Piloto</span>
-                </span>
-              </Link>
-              <p className="text-primary font-semibold mb-2">Subscribe to our Newsletter!</p>
-              <p className="text-muted-foreground text-sm mb-2">Stay updated with audit governance perspectives.</p>
-              <p className="text-accent text-sm font-medium mb-4">Subscribe now for Free!</p>
-              
-              <div className="flex">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="px-4 py-2.5 rounded-l-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent flex-1"
-                />
-                <button className="px-4 py-2.5 bg-accent text-accent-foreground rounded-r-lg hover:bg-accent/90 transition-colors flex items-center gap-2">
-                  <Send className="w-4 h-4" />
-                  Subscribe
-                </button>
-              </div>
-            </div>
-
-            {/* Footer Links */}
-            <div className="lg:col-span-1">
-              <h4 className="font-semibold text-primary mb-4">Quick Links</h4>
-              <div className="flex flex-col gap-2">
-                <Link to="/disclaimer" className="text-muted-foreground hover:text-accent transition-colors text-sm">Disclaimer</Link>
-                <Link to="/contact" className="text-muted-foreground hover:text-accent transition-colors text-sm">Contact Us</Link>
-                <Link to="/sitemap" className="text-muted-foreground hover:text-accent transition-colors text-sm">Sitemap</Link>
-                <Link to="/blog" className="text-muted-foreground hover:text-accent transition-colors text-sm">Knowledge Hub</Link>
-                <Link to="/privacy" className="text-muted-foreground hover:text-accent transition-colors text-sm">Privacy Policy</Link>
-              </div>
-            </div>
-
-            {/* Social Icons */}
-            <div className="lg:col-span-1">
-              <h4 className="font-semibold text-primary mb-4">Follow Us</h4>
-              <div className="flex items-center gap-3">
-                {['Facebook', 'Instagram', 'LinkedIn', 'Twitter', 'YouTube'].map((social, index) => (
-                  <a
-                    key={index}
-                    href="#"
-                    aria-label={social}
-                    className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center hover:bg-accent transition-colors group"
-                  >
-                    <span className="text-muted-foreground group-hover:text-accent-foreground text-xs font-bold">
-                      {social.charAt(0)}
-                    </span>
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* =====================================================
+          6) FOOTER STRIP (like screenshot: newsletter + links)
+          (If you already have a global footer, you can REMOVE this section)
+         ===================================================== */}
+      
     </Layout>
   );
 };
