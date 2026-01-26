@@ -4,8 +4,13 @@ import Layout from '@/components/layout/Layout';
 import SectionTitle from '@/components/shared/SectionTitle';
 import FeatureCard from '@/components/shared/FeatureCard';
 import ContactForm from '@/components/shared/ContactForm';
-import FAQSection from '@/components/shared/FAQSection';
-import CTASection from '@/components/shared/CTASection';
+import seoGrowth from '@/assets/seoGrowth.png';
+
+import seoIllustration from '@/assets/full.png';
+
+
+
+
 
 const SEO = () => {
   const features = [
@@ -44,38 +49,43 @@ const SEO = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="navy-gradient min-h-[60vh] flex items-center relative overflow-hidden">
-        <div className="container-custom relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
-                Search Engine Optimization
-              </h1>
-              <p className="text-xl text-primary-foreground/80 mb-8">
-                Dominate search results and drive qualified organic traffic to your website with our proven SEO strategies.
-              </p>
-              <Link to="/contact" className="btn-orange inline-flex items-center gap-2">
-                Get Free SEO Audit
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-            </div>
-            <div className="relative hidden lg:block">
-              <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-white rounded-xl p-6 text-center">
-                    <div className="text-3xl font-bold text-accent mb-1">300%</div>
-                    <div className="text-sm text-muted-foreground">Traffic Increase</div>
-                  </div>
-                  <div className="bg-white rounded-xl p-6 text-center">
-                    <div className="text-3xl font-bold text-primary mb-1">#1</div>
-                    <div className="text-sm text-muted-foreground">Page Rankings</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* ===================== SEO HERO (IMAGE MATCHED) ===================== */}
+<section className="relative bg-[#f5f4ff] overflow-hidden">
+  <div className="relative z-10 max-w-[1320px] mx-auto px-6 py-28">
+    <div className="grid lg:grid-cols-2 gap-10 items-center">
+
+      {/* LEFT CONTENT */}
+      <div>
+        <h1 className="text-[34px] md:text-[40px] font-bold text-[#1f2937] mb-6">
+          We Show Up Your Business
+        </h1>
+
+        <p className="text-[16px] text-slate-600 max-w-[520px] leading-relaxed mb-8">
+          Teaming up with the best and most successful SEO agency can keep the
+          options of growing up open always! We help you grow timelessly!
+        </p>
+
+        <Link
+          to="/contact"
+          className="inline-block bg-[#001f5b] text-white text-sm font-semibold px-6 py-3 rounded-md hover:bg-[#002b7a] transition"
+        >
+          Get a Free Consultation
+        </Link>
+      </div>
+
+      {/* RIGHT ILLUSTRATION */}
+      <div className="relative hidden lg:flex justify-end">
+        <img
+          src={seoIllustration}
+          alt="SEO Illustration"
+          className="w-[420px] xl:w-[480px]"
+        />
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
       {/* Features */}
       <section className="section-padding bg-white">
@@ -92,33 +102,112 @@ const SEO = () => {
         </div>
       </section>
 
-      {/* Process */}
-      <section className="navy-gradient section-padding">
-        <div className="container-custom">
-          <SectionTitle
-            title="Our SEO Process"
-            subtitle="A systematic approach to achieving top rankings"
-            light
-          />
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {processSteps.map((step, index) => (
-              <div key={index} className="process-card">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center">
-                    <step.icon className="w-6 h-6 text-accent" />
-                  </div>
-                  <span className="text-accent font-bold text-2xl">0{index + 1}</span>
-                </div>
-                <h3 className="text-xl font-bold text-primary-foreground mb-2">{step.title}</h3>
-                <p className="text-primary-foreground/70">{step.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <section className="bg-white py-24">
+  <div className="max-w-[1320px] mx-auto px-6">
 
-      {/* Contact Form */}
-      <section className="section-padding bg-white">
+    <div className="grid lg:grid-cols-2 gap-16 items-center">
+
+      {/* LEFT CONTENT */}
+      <div>
+        <p className="text-[13px] uppercase tracking-widest text-slate-500 mb-4">
+          We Guarantee Overall Growth Of Your Business!
+        </p>
+
+        <h2 className="text-[34px] md:text-[38px] font-semibold text-[#1f2937] leading-tight mb-6">
+          Our SEO Services Assure Topmost <br />
+          Performance For Your Business!
+        </h2>
+
+        <p className="text-[15px] text-slate-600 leading-relaxed mb-4">
+          Digital Piloto is an accomplished provider of SEO Services to all
+          clients. We are working with the ultimate aptitude and brilliance
+          to approve businesses across the online platform.
+        </p>
+
+        <p className="text-[15px] text-slate-600 leading-relaxed mb-4">
+          We have years of knowledge under the best leadership of the most
+          seasoned SEO Consultants who can bring your business the advantages
+          of customized SEO services and facilities.
+        </p>
+
+        <p className="text-[15px] text-slate-600 leading-relaxed">
+          We take care of all the basic and advanced requirements that guarantee
+          superior returns for your business. We make no compromise on finding
+          the best practices that your business looks for!
+        </p>
+      </div>
+
+      {/* RIGHT IMAGE */}
+      <div className="flex justify-center lg:justify-end">
+        <img
+          src={seoGrowth}
+          alt="SEO Growth Illustration"
+          className="w-[460px] xl:w-[520px] object-contain"
+        />
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+      {/* Process */}
+      <section className="relative w-full bg-gradient-to-r from-[#02152a] via-[#052b5f] to-[#053a8c] py-24">
+
+  {/* TOP TEXT */}
+  <div className="max-w-[1200px] mx-auto px-6 text-center mb-14">
+    <h2 className="text-white text-[28px] md:text-[36px] font-light leading-tight">
+      Do You Feel Strong Displeasure When You Find Your <br />
+      Competitors Ahead Of You On Google?
+    </h2>
+
+    <p className="mt-4 text-[13px] tracking-widest uppercase text-white/80">
+      DP AGREES WITH YOU IF YOUR ANSWER IS ‘YES’
+    </p>
+  </div>
+
+  {/* WHITE CARD */}
+  <div className="max-w-[1100px] mx-auto px-6">
+    <div className="bg-white rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.25)] overflow-hidden grid md:grid-cols-[420px_1fr]">
+
+      {/* LEFT IMAGE PANEL */}
+      <div className="bg-[#3a86c6] flex items-center justify-center p-10">
+        <img
+          src={seoIllustration} // import seoImage from assets
+          alt="SEO Concept"
+          className="w-full max-w-[300px] object-contain"
+        />
+      </div>
+
+      {/* RIGHT CONTENT */}
+      <div className="p-10 md:p-14">
+        <h3 className="text-[26px] md:text-[30px] font-medium text-[#1f2937] mb-6">
+          SEO is tedious and technical. We know it takes time and effort to
+          maintain rankings.
+        </h3>
+
+        <p className="text-[15px] leading-relaxed text-slate-600">
+          Our readiness to serve your business can bring you ultimate success.
+          You can always rely on us as we have the most trusted digital
+          marketing experience that can always bring your business the right
+          strategies. Our SEO experts can create customized strategies that can
+          always bring your business the right advantages.
+        </p>
+
+        <p className="mt-4 text-[15px] leading-relaxed text-slate-600">
+          We aim at making your business get the top spot on the Google Search
+          Engine Result Pages (SERPs). We certainly succeed as it is the only
+          thing we work for!
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<section className="section-padding bg-white">
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div>
@@ -136,8 +225,87 @@ const SEO = () => {
         </div>
       </section>
 
-      <FAQSection faqs={faqs} />
-      <CTASection />
+
+
+      <section className="w-full bg-[#0b2f4f] py-16">
+  <div className="max-w-[1320px] mx-auto px-6">
+    <div className="grid md:grid-cols-2 gap-14">
+
+      {/* LEFT */}
+      <div className="text-white pr-0 md:pr-14 md:border-r md:border-white/20">
+        <h3 className="text-xl md:text-2xl font-bold mb-4">
+          Frequently Asked Questions (FAQs)
+        </h3>
+
+        <p className="text-white/80 leading-relaxed text-sm md:text-[15px] max-w-[500px]">
+          We enjoy educating people on the intricacies of digital marketing.
+          Every day, we receive hundreds of questions from our real customers.
+        </p>
+
+        <Link
+          to="/contact"
+          className="mt-8 inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4 hover:text-orange-400 transition"
+        >
+          Learn More
+          <ArrowRight className="w-3.5 h-3.5 text-orange-400" />
+        </Link>
+      </div>
+
+      {/* RIGHT */}
+      <div className="text-white pl-0 md:pl-14">
+        <h3 className="text-xl md:text-2xl font-bold mb-4">
+          Wanna Rewarding Career?
+        </h3>
+
+        <p className="text-white/80 leading-relaxed text-sm md:text-[15px] max-w-[500px]">
+          Join our team of experts if you have the urge to show up your
+          potential! We appreciate a proactive measure to make us trust your
+          skills!
+        </p>
+
+        <Link
+          to="/contact"
+          className="mt-8 inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4 hover:text-orange-400 transition"
+        >
+          Join Our Team
+          <ArrowRight className="w-3.5 h-3.5 text-orange-400" />
+        </Link>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+      
+      {/* ===================== BIG CTA CARD ===================== */}
+      {/* ===================== BIG CTA CARD ===================== */}
+<section className="relative bg-white py-24">
+  <div className="max-w-[1100px] mx-auto px-6">
+
+    <div className="bg-[#0b2f4f] rounded-2xl px-10 md:px-20 py-14 text-center shadow-[0_25px_60px_rgba(0,0,0,0.25)]">
+      
+      <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-6">
+        Looking for The Assistance Of Industry-Best Professionals?
+      </h2>
+
+      <Link
+  to="/contact"
+  className="inline-flex items-center gap-2 text-sm md:text-base font-semibold underline underline-offset-4 text-white hover:text-white transition"
+>
+  Reach us Online or Schedule An Appointment To A Live Call!
+  <ArrowRight className="w-4 h-4 text-orange-400" />
+</Link>
+
+
+    </div>
+
+  </div>
+</section>
+
+    
+     
+
+      
     </Layout>
   );
 };

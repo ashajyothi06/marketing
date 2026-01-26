@@ -1,25 +1,57 @@
-import { useState } from "react";
+
+
+import { useMemo, useState, useEffect } from "react";
+
+
+
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import Layout from "@/components/layout/Layout";
-import FAQSection from "@/components/shared/FAQSection";
-import CTASection from "@/components/shared/CTASection";
-import CareerBanner from "@/components/shared/CareerBanner";
+
 
 // Import images
-import heroBanner from "@/assets/home-hero-banner.jpg";
+import heroBanner from "@/assets/hero-cube.png";
 import aboutMeeting from "@/assets/home-about-meeting.jpg";
 import verticalsHealthcare from "@/assets/home-verticals-healthcare.jpg";
 import globalMap from "@/assets/home-global-map.jpg";
 
 // ✅ OPTIONAL: if you have real credential logos, import them and put below
-// import msmeLogo from "@/assets/credentials/msme.png";
-// import dgftLogo from "@/assets/credentials/dgft.png";
-// import coiLogo from "@/assets/credentials/coi.png";
-// import tmLogo from "@/assets/credentials/tm.png";
-// import googlePartnerLogo from "@/assets/credentials/google.png";
+import msmeLogo from "@/assets/msme.png";
+import dgftLogo from "@/assets/dgft.png";
+import coiLogo from "@/assets/coi.png";
+import tmLogo from "@/assets/tm.png";
+import googlePartnerLogo from "@/assets/Google1.png";
+
+
+const heroSlides = [
+  {
+    title: "Top-Notch Digital Consultants\nFor All B-2-B Marketing Needs!!",
+    description:
+      "We understand marketing principles better than others do. You may always trust our years-long experience for ground-breaking success for your business!",
+  },
+  {
+    title: "Let’s Rule The Digital World!\nDo it in style with Digital Piloto!",
+    description:
+      "Making your business scale higher ranks on search result pages is a time-taking task but not impossible! We bring your business a long-term online identity!",
+  },
+  {
+    title: "Build Your Brand’s Voice\nWith Robust Digital Strategies!",
+    description:
+      "Our team of innovative, flexible, & dynamic digital marketing experts leaves no stone unturned to bring your business the desired results. Trust us to make your business grow!",
+  },
+];
 
 const Home = () => {
+  const [activeSlide, setActiveSlide] = useState(0);
+
+useEffect(() => {
+  const interval = setInterval(() => {
+    setActiveSlide((prev) => (prev + 1) % heroSlides.length);
+  }, 5000); // ⏱️ change every 5 seconds
+
+  return () => clearInterval(interval);
+}, []);
+
   const [activeVertical, setActiveVertical] = useState("Healthcare");
 
   const verticals = [
@@ -133,51 +165,62 @@ const Home = () => {
   return (
     <Layout>
       {/* ===================== HERO (TOP BANNER) ===================== */}
-      <section className="relative w-full overflow-hidden bg-[#041f3a]">
-        <div className="absolute inset-0">
-          <img
-            src={heroBanner}
-            alt="Hero Banner"
-            className="h-full w-full object-cover object-center"
-            draggable={false}
-          />
-          <div className="absolute inset-0 bg-[#041f3a]/35" />
+      {/* ===================== HERO SLIDER ===================== */}
+<section className="relative w-full overflow-hidden bg-[#041f3a]">
+  {/* Background Image */}
+  <div className="absolute inset-0">
+    <img
+      src={heroBanner}
+      alt="Hero"
+      className="h-full w-full object-cover"
+      draggable={false}
+    />
+    <div className="absolute inset-0 bg-[#041f3a]/40" />
+  </div>
+
+  <div className="relative mx-auto max-w-[1320px] px-4 sm:px-6">
+    <div className="min-h-[520px] lg:min-h-[560px] grid lg:grid-cols-2 items-center">
+      
+      {/* LEFT IMAGE SPACE (cube already in banner image) */}
+      <div className="hidden lg:block" />
+
+      {/* RIGHT CONTENT */}
+      <div className="text-white pt-28 lg:pt-0 transition-all duration-700">
+        <h1 className="text-[34px] md:text-[40px] lg:text-[44px] font-extrabold leading-tight whitespace-pre-line">
+          {heroSlides[activeSlide].title}
+        </h1>
+
+        <p className="mt-6 max-w-[620px] text-white/80 text-[14px] md:text-[15px] leading-relaxed">
+          {heroSlides[activeSlide].description}
+        </p>
+
+        <Link
+          to="/about/company-info"
+          className="mt-8 inline-flex items-center gap-2 text-white/90 hover:text-white font-medium"
+        >
+          Explore Opportunities
+          <ArrowRight className="h-4 w-4 text-orange-400" />
+        </Link>
+
+        {/* SLIDER DASHES */}
+        <div className="mt-16 flex justify-end gap-3">
+          {heroSlides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setActiveSlide(index)}
+              className={`h-[3px] w-10 transition-all duration-300 ${
+                activeSlide === index
+                  ? "bg-orange-400"
+                  : "bg-white/30 hover:bg-white/60"
+              }`}
+            />
+          ))}
         </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <div className="relative mx-auto w-full max-w-[1320px] px-4 sm:px-6">
-          <div className="min-h-[520px] lg:min-h-[540px] grid lg:grid-cols-2 items-center">
-            <div className="hidden lg:block" />
-
-            <div className="text-white pt-28 lg:pt-0">
-              <h1 className="text-[34px] md:text-[40px] lg:text-[44px] font-extrabold leading-tight">
-                Build Your Brand&apos;s Voice
-                <br />
-                With Robust Digital Strategies!
-              </h1>
-
-              <p className="mt-6 max-w-[620px] text-white/80 text-[14px] md:text-[15px] leading-relaxed">
-                Our team of innovative, flexible, &amp; dynamic digital marketing
-                experts leaves no stone unturned to bring your business the
-                desired results. Trust us to make your business grow!
-              </p>
-
-              <Link
-                to="/about/company-info"
-                className="mt-8 inline-flex items-center gap-2 text-white/90 hover:text-white font-medium"
-              >
-                Explore Opportunities{" "}
-                <ArrowRight className="h-4 w-4 text-orange-400" />
-              </Link>
-
-              <div className="mt-16 flex justify-end gap-2">
-                <span className="h-[2px] w-10 bg-white/25" />
-                <span className="h-[2px] w-10 bg-white/25" />
-                <span className="h-[2px] w-10 bg-orange-400" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* ===================== ABOUT STRIP ===================== */}
       <section className="w-full">
@@ -215,6 +258,44 @@ const Home = () => {
           </div>
         </div>
       </section>
+      {/* ===================== CREDENTIALS STRIP (EXACT LIKE IMAGE) ===================== */}
+      {/* ===================== CREDENTIALS STRIP ===================== */}
+<section className="w-full bg-white border-t border-slate-200">
+  <div className="flex w-full items-stretch">
+
+    {/* LEFT ORANGE RIBBON */}
+    <div className="relative bg-[#F58220] text-white flex items-center px-12 w-[520px] h-[120px]">
+      <h3 className="text-3xl font-extrabold whitespace-nowrap">
+        Our Credentials
+      </h3>
+
+      {/* Orange Arrow */}
+      <div
+        className="absolute right-[-48px] top-0 h-full w-[48px] bg-[#F58220]"
+        style={{ clipPath: "polygon(0 0, 100% 50%, 0 100%)" }}
+      />
+
+      {/* Dark Blue Border Arrow */}
+      <div
+        className="absolute right-[-60px] top-0 h-full w-[60px] bg-[#041f3a]"
+        style={{ clipPath: "polygon(0 0, 100% 50%, 0 100%)" }}
+      />
+    </div>
+
+    {/* LOGOS ROW */}
+    <div className="flex flex-1 items-center gap-12 pl-20 pr-10 py-6">
+      <img src={msmeLogo} alt="MSME" className="h-24 w-auto object-contain" />
+      <img src={dgftLogo} alt="DGFT" className="h-24 w-auto object-contain" />
+      <img src={coiLogo} alt="Certificate of Incorporation" className="h-24 w-auto object-contain" />
+      <img src={tmLogo} alt="Trademark" className="h-24 w-auto object-contain" />
+      <img src={googlePartnerLogo} alt="Google Partner" className="h-24 w-auto object-contain" />
+    </div>
+
+  </div>
+</section>
+
+
+
 
       {/* ===================== VERTICALS ===================== */}
       <section className="py-20 bg-background">
@@ -322,6 +403,118 @@ const Home = () => {
         </div>
       </section>
 
+      {/* ===================== TRUSTED BY OUR CLIENTS ===================== */}
+
+<section className="w-full bg-white py-20">
+  <div className="max-w-[1320px] mx-auto px-4 sm:px-6">
+    <h2 className="text-center text-3xl md:text-4xl font-extrabold text-slate-900 mb-12">
+      Trusted by our Clients
+    </h2>
+
+    {(() => {
+      // ✅ Replace these with your real client logo imports (or add more)
+      const logos = [
+        { src: msmeLogo, alt: "MSME" },
+        { src: dgftLogo, alt: "DGFT" },
+        { src: coiLogo, alt: "COI" },
+        { src: tmLogo, alt: "Trademark" },
+        { src: googlePartnerLogo, alt: "Google Partner" },
+        { src: msmeLogo, alt: "MSME 2" },
+        { src: dgftLogo, alt: "DGFT 2" },
+        { src: coiLogo, alt: "COI 2" },
+        { src: tmLogo, alt: "Trademark 2" },
+      ];
+
+      // Show 7 like screenshot on desktop, 4 on tablet, 2 on mobile
+      const getPerPage = () => {
+        if (typeof window === "undefined") return 7;
+        const w = window.innerWidth;
+        if (w < 640) return 2;
+        if (w < 1024) return 4;
+        return 7;
+      };
+
+      const [perPage, setPerPage] = useState(getPerPage());
+      const [page, setPage] = useState(0);
+
+      // update perPage on resize
+      useMemo(() => {
+        const onResize = () => {
+          const next = getPerPage();
+          setPerPage(next);
+          setPage(0);
+        };
+        window.addEventListener("resize", onResize);
+        return () => window.removeEventListener("resize", onResize);
+      }, []);
+
+      const totalPages = Math.max(1, Math.ceil(logos.length / perPage));
+      const start = page * perPage;
+      const visible = logos.slice(start, start + perPage);
+
+      const prev = () => setPage((p) => (p - 1 + totalPages) % totalPages);
+      const next = () => setPage((p) => (p + 1) % totalPages);
+
+      return (
+        <>
+          <div className="flex items-center justify-center gap-6">
+            {/* Left button */}
+            <button
+              onClick={prev}
+              aria-label="Previous"
+              className="hidden md:flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm hover:shadow transition"
+            >
+              ‹
+            </button>
+
+            {/* Logos */}
+            <div className="flex items-center gap-4 overflow-hidden">
+              {visible.map((logo, index) => (
+                <div
+                  key={`${logo.alt}-${index}`}
+                  className="h-[60px] w-[150px] bg-white border border-slate-200 rounded-md shadow-sm flex items-center justify-center px-4"
+                >
+                  <img
+                    src={logo.src}
+                    alt={logo.alt}
+                    className="max-h-[36px] w-auto object-contain"
+                    draggable={false}
+                  />
+                </div>
+              ))}
+            </div>
+
+            {/* Right button */}
+            <button
+              onClick={next}
+              aria-label="Next"
+              className="hidden md:flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm hover:shadow transition"
+            >
+              ›
+            </button>
+          </div>
+
+          {/* Dots */}
+          <div className="mt-6 flex justify-center gap-2">
+            {Array.from({ length: totalPages }).map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setPage(i)}
+                aria-label={`Go to slide ${i + 1}`}
+                className={`h-2 w-2 rounded-full ${
+                  i === page ? "bg-slate-700" : "bg-slate-300"
+                }`}
+              />
+            ))}
+          </div>
+        </>
+      );
+    })()}
+  </div>
+</section>
+
+
+
       {/* ===================== RESOURCE BOX ===================== */}
       <section className="section-padding bg-secondary">
         <div className="container-custom">
@@ -382,10 +575,82 @@ const Home = () => {
           </div>
         </div>
       </section>
+      {/*FAQ'S*/}
 
-      <FAQSection faqs={faqs} />
-      <CareerBanner />
-      <CTASection />
+       {/* ===================== FAQ & CAREER STRIP ===================== */}
+<section className="w-full bg-[#0b2f4f] py-20">
+  <div className="max-w-[1320px] mx-auto px-6">
+    <div className="grid md:grid-cols-2 gap-16">
+
+      {/* LEFT */}
+      <div className="text-white pr-0 md:pr-16 md:border-r md:border-white/20">
+        <h3 className="text-3xl font-bold mb-6">
+          Frequently Asked Questions (FAQs)
+        </h3>
+
+        <p className="text-white/80 leading-relaxed max-w-[520px]">
+          We enjoy educating people on the intricacies of digital marketing.
+          Every day, we receive hundreds of questions from our real customers.
+        </p>
+
+        <Link
+          to="/contact"
+          className="mt-10 inline-flex items-center gap-2 text-white font-semibold underline underline-offset-4 hover:text-orange-400 transition"
+        >
+          Learn More
+          <ArrowRight className="w-4 h-4 text-orange-400" />
+        </Link>
+      </div>
+
+      {/* RIGHT */}
+      <div className="text-white pl-0 md:pl-16">
+        <h3 className="text-3xl font-bold mb-6">
+          Wanna Rewarding Career?
+        </h3>
+
+        <p className="text-white/80 leading-relaxed max-w-[520px]">
+          Join our team of experts if you have the urge to show up your
+          potential! We appreciate a proactive measure to make us trust your
+          skills!
+        </p>
+
+        <Link
+          to="/contact"
+          className="mt-10 inline-flex items-center gap-2 text-white font-semibold underline underline-offset-4 hover:text-orange-400 transition"
+        >
+          Join Our Team
+          <ArrowRight className="w-4 h-4 text-orange-400" />
+        </Link>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{/* ===================== BIG CTA CARD ===================== */}
+<section className="relative bg-white py-28">
+  <div className="max-w-[1100px] mx-auto px-6">
+
+    <div className="bg-[#0b2f4f] rounded-2xl px-10 md:px-20 py-16 text-center shadow-[0_25px_60px_rgba(0,0,0,0.25)]">
+      
+      <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">
+        Looking for The Assistance Of Industry-Best Professionals?
+      </h2>
+
+      <Link
+        to="/contact"
+        className="inline-flex items-center gap-2 text-white text-lg font-semibold underline underline-offset-4 hover:text-orange-400 transition"
+      >
+        Reach us Online or Schedule An Appointment To A Live Call!
+        <ArrowRight className="w-5 h-5 text-orange-400" />
+      </Link>
+
+    </div>
+
+  </div>
+</section>
+
+
     </Layout>
   );
 };
