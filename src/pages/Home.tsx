@@ -185,7 +185,9 @@ useEffect(() => {
       <div className="hidden lg:block" />
 
       {/* RIGHT CONTENT */}
-      <div className="text-white pt-28 lg:pt-0 transition-all duration-700">
+      
+        <div className="text-white transition-all duration-700">
+
         <h1 className="text-[34px] md:text-[40px] lg:text-[44px] font-extrabold leading-tight whitespace-pre-line">
           {heroSlides[activeSlide].title}
         </h1>
@@ -412,7 +414,6 @@ useEffect(() => {
     </h2>
 
     {(() => {
-      // ✅ Replace these with your real client logo imports (or add more)
       const logos = [
         { src: msmeLogo, alt: "MSME" },
         { src: dgftLogo, alt: "DGFT" },
@@ -425,70 +426,61 @@ useEffect(() => {
         { src: tmLogo, alt: "Trademark 2" },
       ];
 
-      // Show 7 like screenshot on desktop, 4 on tablet, 2 on mobile
       const getPerPage = () => {
-        if (typeof window === "undefined") return 7;
+        if (typeof window === "undefined") return 6;
         const w = window.innerWidth;
         if (w < 640) return 2;
         if (w < 1024) return 4;
-        return 7;
+        return 6;
       };
 
       const [perPage, setPerPage] = useState(getPerPage());
       const [page, setPage] = useState(0);
 
-      // update perPage on resize
-      useMemo(() => {
+      useEffect(() => {
         const onResize = () => {
-          const next = getPerPage();
-          setPerPage(next);
+          setPerPage(getPerPage());
           setPage(0);
         };
         window.addEventListener("resize", onResize);
         return () => window.removeEventListener("resize", onResize);
       }, []);
 
-      const totalPages = Math.max(1, Math.ceil(logos.length / perPage));
-      const start = page * perPage;
-      const visible = logos.slice(start, start + perPage);
-
-      const prev = () => setPage((p) => (p - 1 + totalPages) % totalPages);
-      const next = () => setPage((p) => (p + 1) % totalPages);
+      const totalPages = Math.ceil(logos.length / perPage);
+      const visible = logos.slice(page * perPage, page * perPage + perPage);
 
       return (
         <>
           <div className="flex items-center justify-center gap-6">
-            {/* Left button */}
+            {/* Left */}
             <button
-              onClick={prev}
-              aria-label="Previous"
-              className="hidden md:flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm hover:shadow transition"
+              onClick={() => setPage((p) => (p - 1 + totalPages) % totalPages)}
+              className="hidden md:flex h-10 w-10 items-center justify-center rounded-full border bg-white shadow"
             >
               ‹
             </button>
 
             {/* Logos */}
-            <div className="flex items-center gap-4 overflow-hidden">
-              {visible.map((logo, index) => (
+            <div className="flex items-center gap-6 overflow-hidden">
+              {visible.map((logo, i) => (
                 <div
-                  key={`${logo.alt}-${index}`}
-                  className="h-[60px] w-[150px] bg-white border border-slate-200 rounded-md shadow-sm flex items-center justify-center px-4"
+                  key={i}
+                  className="h-[80px] w-[190px] bg-white border border-slate-200 rounded-lg shadow-sm flex items-center justify-center px-6"
                 >
                   <img
                     src={logo.src}
                     alt={logo.alt}
-                    className="max-h-[36px] w-auto object-contain"
+                    className="max-h-[56px] w-auto object-contain"
                     draggable={false}
                   />
                 </div>
               ))}
             </div>
 
-            {/* Right button */}
+            {/* Right */}
             <button
-              onClick={next}
-              aria-label="Next"
-              className="hidden md:flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm hover:shadow transition"
+              onClick={() => setPage((p) => (p + 1) % totalPages)}
+              className="hidden md:flex h-10 w-10 items-center justify-center rounded-full border bg-white shadow"
             >
               ›
             </button>
@@ -500,7 +492,6 @@ useEffect(() => {
               <button
                 key={i}
                 onClick={() => setPage(i)}
-                aria-label={`Go to slide ${i + 1}`}
                 className={`h-2 w-2 rounded-full ${
                   i === page ? "bg-slate-700" : "bg-slate-300"
                 }`}
@@ -512,6 +503,7 @@ useEffect(() => {
     })()}
   </div>
 </section>
+
 
 
 

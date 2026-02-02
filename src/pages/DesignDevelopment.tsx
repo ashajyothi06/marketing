@@ -122,38 +122,61 @@ const DesignDevelopment = () => {
     <Layout>
       {/* ===================== HERO ===================== */}
       <section className="relative w-full min-h-screen overflow-hidden bg-[#061a33]">
-        <div className="absolute inset-0">
-          <img src={heroBg} alt="Digital Piloto" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#061a33]/85 via-[#0a2a52]/80 to-[#0b3a78]/85" />
-        </div>
+  {/* Background */}
+  <div className="absolute inset-0">
+    <img
+      src={heroBg}
+      alt="Digital Piloto"
+      className="w-full h-full object-cover"
+    />
+    <div className="absolute inset-0 bg-gradient-to-b from-[#061a33]/85 via-[#0a2a52]/80 to-[#0b3a78]/85" />
+  </div>
 
-        <div className="relative z-10 flex flex-col items-center justify-center min-h-screen text-center px-6">
-          <p className="text-white/70 text-xs tracking-[0.45em] uppercase mb-6">
-            W E L C O M E &nbsp; T O
-          </p>
+  {/* CENTERED CONTENT */}
+  <div className="relative z-10 flex flex-col items-center justify-center min-h-screen text-center px-6">
 
-          <div className="relative mb-6">
-            <svg width="260" height="260" viewBox="0 0 260 260" className="absolute inset-0 -z-10">
-              <circle cx="130" cy="130" r="95" stroke="white" strokeOpacity="0.25" fill="none" />
-              <circle cx="130" cy="130" r="80" stroke="white" strokeOpacity="0.15" fill="none" />
-            </svg>
+    <p className="text-white/70 text-xs tracking-[0.45em] uppercase mb-6">
+      W E L C O M E &nbsp; T O
+    </p>
 
-            <h1 className="text-[44px] md:text-[60px] lg:text-[68px] font-serif font-semibold text-white">
-              Digital Piloto
-            </h1>
-          </div>
+    {/* LOGO + CIRCLES */}
+    <div className="relative mb-6 flex items-center justify-center">
+      <svg
+        width="260"
+        height="260"
+        viewBox="0 0 260 260"
+        className="absolute -z-10"
+      >
+        <circle
+          cx="130"
+          cy="130"
+          r="95"
+          stroke="white"
+          strokeOpacity="0.25"
+          fill="none"
+        />
+        <circle
+          cx="130"
+          cy="130"
+          r="80"
+          stroke="white"
+          strokeOpacity="0.15"
+          fill="none"
+        />
+      </svg>
 
-          <h2 className="text-[20px] md:text-[26px] lg:text-[30px] font-semibold text-[#f4b41a]">
-            Web Design &amp; Development
-          </h2>
+      <h1 className="text-[44px] md:text-[60px] lg:text-[68px] font-serif font-semibold text-white">
+        Digital Piloto
+      </h1>
+    </div>
 
-          <div className="mt-14">
-            <div className="w-[36px] h-[56px] rounded-full border border-white/40 flex items-start justify-center pt-2">
-              <span className="w-[4px] h-[12px] rounded-full bg-white/70 animate-bounce" />
-            </div>
-          </div>
-        </div>
-      </section>
+    <h2 className="text-[20px] md:text-[26px] lg:text-[30px] font-semibold text-[#f4b41a]">
+      Web Design &amp; Development
+    </h2>
+
+  </div>
+</section>
+
 
       {/* ===================== PORTFOLIO ===================== */}
       <section className="relative bg-background overflow-hidden py-20">

@@ -2,23 +2,27 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ChevronDown, Phone, Menu, X, Send } from "lucide-react";
 
-// OPTIONAL: if you have a real logo image like in screenshot, import it and use below
-// import dpLogo from "@/assets/digitalpiloto-logo.png";
-
 const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
 
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+
+  // MOBILE STATES
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileSection, setMobileSection] = useState<string | null>(null);
+  const [mobileSubSection, setMobileSubSection] = useState<string | null>(null);
+
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setIsScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
     setMobileMenuOpen(false);
+    setMobileSection(null);
+    setMobileSubSection(null);
     setActiveDropdown(null);
   }, [location]);
 
@@ -45,240 +49,256 @@ const Header = () => {
 
   return (
     <header
-      className={[
-        "fixed top-0 left-0 right-0 z-50",
-        "transition-all duration-300",
-        // gradient like screenshot
-        "bg-gradient-to-r from-[#051a2f] via-[#082a4a] to-[#0a3b78]",
-        isScrolled ? "shadow-md" : "",
-        "border-b border-white/10",
-      ].join(" ")}
+      className={`fixed top-0 left-0 right-0 z-50
+      bg-gradient-to-r from-[#051a2f] via-[#082a4a] to-[#0a3b78]
+      border-b border-white/10 transition-all
+      ${isScrolled ? "shadow-md" : ""}`}
     >
-      {/* exact height feel */}
-      <div className={["w-full", isScrolled ? "py-3" : "py-4"].join(" ")}>
-        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-6">
-          <div className="flex items-center justify-between">
-            {/* LEFT: Logo */}
-            <Link to="/" className="flex items-center gap-2">
-              {/* If you have logo image: uncomment below and remove text */}
-              {/* <img src={dpLogo} alt="digitalpiloto" className="h-9 w-auto" /> */}
+      {/* TOP BAR */}
+      <div className={`px-4 sm:px-6 ${isScrolled ? "py-3" : "py-4"}`}>
+        <div className="max-w-[1440px] mx-auto flex items-center justify-between">
 
-              <div className="flex items-center gap-1">
-                <span className="text-white font-extrabold italic tracking-tight text-2xl">
-                  digitalpiloto
-                </span>
-                <span className="text-white/80 text-xs font-semibold align-top -mt-2">
-                  ®
-                </span>
-              </div>
-            </Link>
+          {/* LOGO */}
+          <Link to="/" className="text-white font-extrabold italic text-2xl">
+            digitalpiloto<span className="text-xs align-top">®</span>
+          </Link>
 
-            {/* CENTER: Desktop nav */}
-            <nav className="hidden lg:flex items-center gap-12">
-              {/* About dropdown */}
-              <div
-                className="relative"
-                onMouseEnter={() => setActiveDropdown("about")}
-                onMouseLeave={() => setActiveDropdown(null)}
-              >
-                <button className="text-white/90 hover:text-white font-medium flex items-center gap-1">
-                  About <ChevronDown className="w-4 h-4 opacity-90" />
-                </button>
+          {/* ================= DESKTOP NAV ================= */}
+          <nav className="hidden lg:flex items-center gap-10">
 
-                {activeDropdown === "about" && (
-                  <div className="absolute top-full left-0 pt-3">
-                    <div className="bg-white rounded-md shadow-xl py-2 min-w-[210px] border border-slate-100">
-                      {aboutDropdown.map((item, index) => (
-                        <div key={index}>
-                          {item.submenu ? (
-                            <div className="relative group">
-                              <button className="w-full px-4 py-2.5 text-left text-slate-700 hover:bg-slate-50 flex items-center justify-between">
-                                {item.label}
-                                <ChevronDown className="w-4 h-4 -rotate-90" />
-                              </button>
-                              <div className="absolute left-full top-0 ml-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
-                                <div className="bg-white rounded-md shadow-xl py-2 min-w-[200px] border border-slate-100">
-                                  {item.submenu.map((sub, subIndex) => (
-                                    <Link
-                                      key={subIndex}
-                                      to={sub.path}
-                                      className="block px-4 py-2.5 text-slate-700 hover:bg-slate-50"
-                                    >
-                                      {sub.label}
-                                    </Link>
-                                  ))}
-                                </div>
-                              </div>
+            {/* ABOUT */}
+            <div
+              className="relative"
+              onMouseEnter={() => setActiveDropdown("about")}
+              onMouseLeave={() => setActiveDropdown(null)}
+            >
+              <button className="text-white flex items-center gap-1">
+                About <ChevronDown className="w-4 h-4" />
+              </button>
+
+              {activeDropdown === "about" && (
+                <div className="absolute top-full left-0 pt-3">
+                  <div className="bg-white rounded-md shadow-xl py-2 min-w-[220px]">
+                    {aboutDropdown.map((item, i) =>
+                      item.submenu ? (
+                        <div key={i} className="relative group">
+                          <button className="w-full px-4 py-2 text-left flex justify-between">
+                            {item.label}
+                            <ChevronDown className="-rotate-90 w-4 h-4" />
+                          </button>
+
+                          <div className="absolute left-full top-0 ml-2 opacity-0 invisible group-hover:visible group-hover:opacity-100">
+                            <div className="bg-white rounded-md shadow-xl py-2 min-w-[200px]">
+                              {item.submenu.map((sub, j) => (
+                                <Link
+                                  key={j}
+                                  to={sub.path}
+                                  className="block px-4 py-2 hover:bg-slate-50"
+                                >
+                                  {sub.label}
+                                </Link>
+                              ))}
                             </div>
-                          ) : (
-                            <Link
-                              to={item.path}
-                              className="block px-4 py-2.5 text-slate-700 hover:bg-slate-50"
-                            >
-                              {item.label}
-                            </Link>
-                          )}
+                          </div>
                         </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* Digital Marketing dropdown */}
-              <div
-                className="relative"
-                onMouseEnter={() => setActiveDropdown("digital")}
-                onMouseLeave={() => setActiveDropdown(null)}
-              >
-                <button className="text-white/90 hover:text-white font-medium flex items-center gap-1">
-                  Digital Marketing <ChevronDown className="w-4 h-4 opacity-90" />
-                </button>
-
-                {activeDropdown === "digital" && (
-                  <div className="absolute top-full left-0 pt-3">
-                    <div className="bg-white rounded-md shadow-xl py-2 min-w-[220px] border border-slate-100">
-                      {digitalMarketingDropdown.map((item, index) => (
+                      ) : (
                         <Link
-                          key={index}
+                          key={i}
                           to={item.path}
-                          className="block px-4 py-2.5 text-slate-700 hover:bg-slate-50"
+                          className="block px-4 py-2 hover:bg-slate-50"
                         >
                           {item.label}
                         </Link>
-                      ))}
-                    </div>
+                      )
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* DIGITAL MARKETING (CLICKABLE + DROPDOWN) */}
+            <div
+              className="relative"
+              onMouseEnter={() => setActiveDropdown("digital")}
+              onMouseLeave={() => setActiveDropdown(null)}
+            >
+              <Link
+                to="/digital-marketing"
+                className="text-white flex items-center gap-1"
+              >
+                Digital Marketing <ChevronDown className="w-4 h-4" />
+              </Link>
+
+              {activeDropdown === "digital" && (
+                <div className="absolute top-full left-0 pt-3">
+                  <div className="bg-white rounded-md shadow-xl py-2 min-w-[220px]">
+                    {digitalMarketingDropdown.map((item, i) => (
+                      <Link
+                        key={i}
+                        to={item.path}
+                        className="block px-4 py-2 hover:bg-slate-50"
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <Link to="/design-development" className="text-white">
+              Design & Development
+            </Link>
+            <Link to="/blog" className="text-white">
+              Blog
+            </Link>
+            <Link to="/contact" className="text-white">
+              Contact Us
+            </Link>
+          </nav>
+
+          {/* DESKTOP CTA */}
+          <div className="hidden lg:flex gap-3">
+            <button className="h-11 w-11 bg-[#f58220] rounded-md flex items-center justify-center">
+              <Phone className="w-5 h-5 text-white" />
+            </button>
+
+            <Link
+              to="/contact"
+              className="h-11 px-5 bg-[#f58220] rounded-md text-white flex items-center gap-2 font-semibold"
+            >
+              Get a Proposal <Send className="w-4 h-4" />
+            </Link>
+          </div>
+
+          {/* MOBILE TOGGLE */}
+          <button
+            className="lg:hidden"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? (
+              <X className="w-6 h-6 text-white" />
+            ) : (
+              <Menu className="w-6 h-6 text-white" />
+            )}
+          </button>
+        </div>
+      </div>
+
+      {/* ================= MOBILE MENU ================= */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden bg-white border-t">
+          <div className="px-4 py-4 space-y-4">
+
+            {/* ABOUT */}
+            <button
+              onClick={() =>
+                setMobileSection(mobileSection === "about" ? null : "about")
+              }
+              className="w-full flex justify-between font-semibold"
+            >
+              About
+              <ChevronDown
+                className={`transition-transform ${
+                  mobileSection === "about" ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+
+            {mobileSection === "about" && (
+              <div className="pl-4 space-y-2 text-sm">
+                <Link to="/about/company-info" className="block py-1">
+                  Company Info
+                </Link>
+                <Link to="/about/team" className="block py-1">
+                  Team
+                </Link>
+
+                {/* TESTIMONIALS */}
+                <button
+                  onClick={() =>
+                    setMobileSubSection(
+                      mobileSubSection === "testimonials" ? null : "testimonials"
+                    )
+                  }
+                  className="w-full flex justify-between items-center py-1"
+                >
+                  Testimonials
+                  <ChevronDown
+                    className={`transition-transform ${
+                      mobileSubSection === "testimonials" ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+
+                {mobileSubSection === "testimonials" && (
+                  <div className="pl-4 space-y-2">
+                    <Link to="/about/testimonials/video" className="block py-1">
+                      Video Testimonials
+                    </Link>
+                    <Link to="/about/testimonials/text" className="block py-1">
+                      Text Testimonials
+                    </Link>
                   </div>
                 )}
               </div>
+            )}
 
-              <Link
-                to="/design-development"
-                className="text-white/90 hover:text-white font-medium"
-              >
-                Design &amp; Development
-              </Link>
-
-              <Link to="/blog" className="text-white/90 hover:text-white font-medium">
-                Blog
-              </Link>
-
-              <Link
-                to="/contact"
-                className="text-white/90 hover:text-white font-medium"
-              >
-                Contact Us
-              </Link>
-            </nav>
-
-            {/* RIGHT: Actions */}
-            <div className="hidden lg:flex items-center gap-3">
-              {/* orange phone square like screenshot */}
-              <button
-                aria-label="Call"
-                className="h-11 w-11 rounded-md bg-[#f58220] flex items-center justify-center hover:opacity-95 transition"
-              >
-                <Phone className="w-5 h-5 text-white" />
-              </button>
-
-              {/* orange button with paper-plane */}
-              <Link
-                to="/contact"
-                className="h-11 inline-flex items-center gap-2 rounded-md bg-[#f58220] px-5 font-semibold text-white hover:opacity-95 transition"
-              >
-                Get a Proposal
-                <Send className="w-4 h-4 text-white" />
-              </Link>
-            </div>
-
-            {/* Mobile menu button */}
+            {/* DIGITAL MARKETING */}
             <button
-              className="lg:hidden h-10 w-10 flex items-center justify-center"
-              onClick={() => setMobileMenuOpen((s) => !s)}
-              aria-label="Toggle menu"
+              onClick={() =>
+                setMobileSection(mobileSection === "digital" ? null : "digital")
+              }
+              className="w-full flex justify-between font-semibold"
             >
-              {mobileMenuOpen ? (
-                <X className="w-6 h-6 text-white" />
-              ) : (
-                <Menu className="w-6 h-6 text-white" />
-              )}
+              Digital Marketing
+              <ChevronDown
+                className={`transition-transform ${
+                  mobileSection === "digital" ? "rotate-180" : ""
+                }`}
+              />
             </button>
-          </div>
-        </div>
 
-        {/* MOBILE MENU */}
-        {mobileMenuOpen && (
-          <div className="lg:hidden bg-white shadow-lg border-t border-slate-100">
-            <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-6 py-4 space-y-4">
-              <div className="space-y-2">
-                <p className="text-xs font-bold text-slate-500 tracking-widest uppercase">
-                  About
-                </p>
-                {aboutDropdown.map((item, index) => (
-                  <div key={index}>
-                    {item.submenu ? (
-                      item.submenu.map((sub, subIndex) => (
-                        <Link
-                          key={subIndex}
-                          to={sub.path}
-                          className="block px-2 py-2 text-slate-700"
-                        >
-                          {sub.label}
-                        </Link>
-                      ))
-                    ) : (
-                      <Link to={item.path} className="block px-2 py-2 text-slate-700">
-                        {item.label}
-                      </Link>
-                    )}
-                  </div>
-                ))}
-              </div>
+            {mobileSection === "digital" && (
+              <div className="pl-4 space-y-2 text-sm">
+                <Link to="/digital-marketing" className="block py-1 font-medium">
+                  Overview
+                </Link>
 
-              <div className="space-y-2">
-                <p className="text-xs font-bold text-slate-500 tracking-widest uppercase">
-                  Digital Marketing
-                </p>
-                {digitalMarketingDropdown.map((item, index) => (
-                  <Link
-                    key={index}
-                    to={item.path}
-                    className="block px-2 py-2 text-slate-700"
-                  >
+                {digitalMarketingDropdown.map((item, i) => (
+                  <Link key={i} to={item.path} className="block py-1">
                     {item.label}
                   </Link>
                 ))}
               </div>
+            )}
 
-              <Link to="/design-development" className="block px-2 py-2 text-slate-700 font-medium">
-                Design &amp; Development
-              </Link>
-              <Link to="/blog" className="block px-2 py-2 text-slate-700 font-medium">
-                Blog
-              </Link>
-              <Link to="/contact" className="block px-2 py-2 text-slate-700 font-medium">
-                Contact Us
-              </Link>
+            <Link to="/design-development" className="block font-semibold">
+              Design & Development
+            </Link>
+            <Link to="/blog" className="block font-semibold">
+              Blog
+            </Link>
+            <Link to="/contact" className="block font-semibold">
+              Contact Us
+            </Link>
 
-              <div className="pt-2 flex gap-3">
-                <button
-                  aria-label="Call"
-                  className="h-11 w-11 rounded-md bg-[#f58220] flex items-center justify-center"
-                >
-                  <Phone className="w-5 h-5 text-white" />
-                </button>
+            {/* MOBILE CTA */}
+            <div className="pt-4 flex gap-3">
+              <button className="h-11 w-11 bg-[#f58220] rounded-md flex items-center justify-center">
+                <Phone className="w-5 h-5 text-white" />
+              </button>
 
-                <Link
-                  to="/contact"
-                  className="flex-1 h-11 inline-flex items-center justify-center gap-2 rounded-md bg-[#f58220] font-semibold text-white"
-                >
-                  Get a Proposal <Send className="w-4 h-4" />
-                </Link>
-              </div>
+              <Link
+                to="/contact"
+                className="flex-1 h-11 bg-[#f58220] rounded-md text-white flex items-center justify-center gap-2 font-semibold"
+              >
+                Get a Proposal <Send className="w-4 h-4" />
+              </Link>
             </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </header>
   );
 };

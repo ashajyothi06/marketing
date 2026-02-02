@@ -2,8 +2,9 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, MousePointer, Target, Zap, LineChart, ArrowUpRight } from 'lucide-react';
 import Layout from '@/components/layout/Layout';
 import SectionTitle from '@/components/shared/SectionTitle';
-import ContactForm from '@/components/shared/ContactForm';
-import CTASection from '@/components/shared/CTASection';
+
+import scenario from '@/assets/scenario.png';
+import cro from '@/assets/CRO.png';
 
 const CRO = () => {
   const scenarios = [
@@ -36,96 +37,322 @@ const CRO = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="navy-gradient min-h-[50vh] flex items-center relative overflow-hidden">
-        <div className="container-custom relative z-10 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
-            Conversion Rate Optimization
-          </h1>
-          <p className="text-xl text-primary-foreground/80 max-w-3xl mx-auto mb-8">
-            Turn your website visitors into paying customers with data-driven optimization strategies
-          </p>
-          <Link to="/contact" className="btn-orange inline-flex items-center gap-2">
-            Boost Your Conversions
-            <ArrowRight className="w-5 h-5" />
-          </Link>
-        </div>
-      </section>
+     <section className="relative bg-gradient-to-r from-[#021b33] to-[#003a8f] py-24">
+  <div className="max-w-[1400px] mx-auto px-6 grid md:grid-cols-2 items-center gap-12">
 
-      {/* Scenarios */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <SectionTitle
-            title="Common Conversion Challenges We Solve"
-            subtitle="Recognize any of these scenarios?"
-          />
-          <div className="space-y-12">
-            {scenarios.map((scenario, index) => (
-              <div key={index} className={`grid md:grid-cols-2 gap-8 items-center ${index % 2 === 1 ? 'md:grid-flow-col-dense' : ''}`}>
-                <div className={index % 2 === 1 ? 'md:col-start-2' : ''}>
-                  <img
-                    src={scenario.image}
-                    alt={scenario.title}
-                    className="rounded-2xl shadow-card w-full aspect-[4/3] object-cover"
-                  />
-                </div>
-                <div className={index % 2 === 1 ? 'md:col-start-1' : ''}>
-                  <div className="flex items-center gap-2 text-accent mb-4">
-                    <span className="text-sm font-semibold">SCENARIO {index + 1}</span>
-                  </div>
-                  <h3 className="text-2xl font-bold text-primary mb-4">{scenario.title}</h3>
-                  <p className="text-muted-foreground mb-4">{scenario.description}</p>
-                  <div className="bg-accent/10 rounded-xl p-4">
-                    <p className="text-primary font-medium">
-                      <span className="text-accent">Our Solution:</span> {scenario.solution}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+    {/* LEFT ILLUSTRATION */}
+    <div className="flex justify-center">
+      <img
+        src={scenario}
+        alt="Scenarios Illustration"
+        className="max-w-[420px] w-full"
+      />
+    </div>
+
+    {/* RIGHT TITLE */}
+    <div>
+      <h2 className="text-white text-5xl font-semibold relative inline-block">
+        Scenarios
+        <span className="block w-20 h-[3px] bg-white mt-4" />
+      </h2>
+    </div>
+
+  </div>
+</section>
+
+<section className="bg-gradient-to-r from-[#021b33] to-[#003a8f]">
+  <div className="grid lg:grid-cols-2 items-stretch">
+
+    {/* LEFT IMAGE */}
+    <div>
+      <img
+        src={cro}
+        alt="No Leads Issue"
+        className="w-full h-full object-cover"
+      />
+    </div>
+
+    {/* RIGHT CONTENT */}
+    <div className="flex items-center px-10 lg:px-20 py-20 text-white">
+      <div className="max-w-[560px]">
+
+        <h3 className="text-3xl font-semibold mb-6 leading-snug">
+          Getting a lot of inbound website traffic but you are not receiving any
+          Leads in terms of calls or messages!!
+        </h3>
+
+        <p className="text-white/90 leading-relaxed mb-10">
+          Don’t worry you are not the only business owner who has been facing such
+          a situation. There exist some technical defects that prevent you from
+          getting the advantages of receiving a large traffic. Our expert CRO can
+          find the right remedy that can get you rid of such a situation!
+        </p>
+
+        <button className="border border-white px-8 py-3 rounded text-sm font-semibold hover:bg-white hover:text-[#003a8f] transition">
+          GET ASSISTANCE
+        </button>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<section className="bg-gradient-to-r from-[#021b33] to-[#003a8f]">
+  <div className="grid lg:grid-cols-2 items-stretch">
+
+    {/* LEFT CONTENT */}
+    <div className="flex items-center px-10 lg:px-20 py-20 text-white">
+      <div className="max-w-[560px]">
+
+        <h3 className="text-3xl font-semibold mb-6 leading-snug">
+          A lot of Leads are getting garnered via Social media handles but none
+          of them are Valid / or of No utility?
+        </h3>
+
+        <p className="text-white/90 leading-relaxed mb-10">
+          It is a matter of concern as converting such leads is easier. With the
+          expert CRO services at Digital Piloto, you can see the difference in how
+          these leads get converted into potential customers.
+        </p>
+
+        <button className="border border-white px-8 py-3 rounded text-sm font-semibold hover:bg-white hover:text-[#003a8f] transition">
+          GET ASSISTANCE
+        </button>
+
+      </div>
+    </div>
+
+    {/* RIGHT IMAGE */}
+    <div>
+      <img
+        src={cro}
+        alt="Invalid Leads Issue"
+        className="w-full h-full object-cover"
+      />
+    </div>
+
+  </div>
+</section>
+
+
+<section className="bg-gradient-to-r from-[#021b33] to-[#003a8f]">
+  <div className="grid lg:grid-cols-2 items-stretch">
+
+    {/* LEFT IMAGE */}
+    <div>
+      <img
+        src={cro}
+        alt="No Leads Issue"
+        className="w-full h-full object-cover"
+      />
+    </div>
+
+    {/* RIGHT CONTENT */}
+    <div className="flex items-center px-10 lg:px-20 py-20 text-white">
+      <div className="max-w-[560px]">
+
+        <h3 className="text-3xl font-semibold mb-6 leading-snug">
+          Getting a lot of inbound website traffic but you are not receiving any
+          Leads in terms of calls or messages!!
+        </h3>
+
+        <p className="text-white/90 leading-relaxed mb-10">
+          Don’t worry you are not the only business owner who has been facing such
+          a situation. There exist some technical defects that prevent you from
+          getting the advantages of receiving a large traffic. Our expert CRO can
+          find the right remedy that can get you rid of such a situation!
+        </p>
+
+        <button className="border border-white px-8 py-3 rounded text-sm font-semibold hover:bg-white hover:text-[#003a8f] transition">
+          GET ASSISTANCE
+        </button>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<section className="bg-gradient-to-r from-[#021b33] to-[#003a8f]">
+  <div className="grid lg:grid-cols-2 items-stretch">
+
+    {/* LEFT CONTENT */}
+    <div className="flex items-center px-10 lg:px-20 py-20 text-white">
+      <div className="max-w-[560px]">
+
+        <h3 className="text-3xl font-semibold mb-6 leading-snug">
+          A lot of Leads are getting garnered via Social media handles but none
+          of them are Valid / or of No utility?
+        </h3>
+
+        <p className="text-white/90 leading-relaxed mb-10">
+          It is a matter of concern as converting such leads is easier. With the
+          expert CRO services at Digital Piloto, you can see the difference in how
+          these leads get converted into potential customers.
+        </p>
+
+        <button className="border border-white px-8 py-3 rounded text-sm font-semibold hover:bg-white hover:text-[#003a8f] transition">
+          GET ASSISTANCE
+        </button>
+
+      </div>
+    </div>
+
+    {/* RIGHT IMAGE */}
+    <div>
+      <img
+        src={cro}
+        alt="Invalid Leads Issue"
+        className="w-full h-full object-cover"
+      />
+    </div>
+
+  </div>
+</section>
+
+
+
+      <section className="relative bg-white py-24">
+  <div className="max-w-[1300px] mx-auto px-6 grid lg:grid-cols-2 gap-16 items-start">
+
+    {/* LEFT CONTENT */}
+    <div>
+      <span className="inline-block bg-blue-50 text-blue-700 text-xs font-semibold px-3 py-1 mb-4">
+        LET'S STRATEGIZE
+      </span>
+
+      <h2 className="text-4xl font-semibold mb-6">
+        Ready to Collaborate? <br /> Get in Touch
+      </h2>
+
+      <p className="text-slate-600 leading-relaxed max-w-[520px]">
+        At Digital Piloto, we have a superb team of self-motivated SMO professionals
+        with a proven track record of handling 100+ successful projects.
+        We focus on delivering the right value for your money.
+      </p>
+    </div>
+
+    {/* RIGHT FORM */}
+    <div className="bg-white rounded-xl shadow-[0_0_30px_rgba(0,150,255,0.2)] p-10 border border-blue-200">
+
+      <h3 className="text-xl font-bold mb-6">
+        MAKE POTENTIAL <span className="text-blue-500">10X GROWTH</span> POSSIBLE
+      </h3>
+
+      <form className="space-y-4">
+
+        <div className="grid grid-cols-2 gap-4">
+          <input placeholder="First Name*" className="input" />
+          <input placeholder="Last Name*" className="input" />
         </div>
-      </section>
+
+        <input placeholder="Email*" className="input" />
+
+        <input placeholder="📞 Phone Number*" className="input" />
+
+        <input placeholder="Website URL / Company name*" className="input" />
+
+        <textarea rows="4" placeholder="Message" className="input resize-none" />
+
+        <div className="flex items-center gap-3 border p-3 rounded">
+          <input type="checkbox" />
+          <span className="text-sm">I'm not a robot</span>
+        </div>
+
+        <button className="bg-[#002a5c] text-white px-8 py-3 mt-4">
+          Get in Touch
+        </button>
+
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<section className="w-full bg-[#0b2f4f] py-16">
+  <div className="max-w-[1320px] mx-auto px-6">
+    <div className="grid md:grid-cols-2 gap-14 relative">
+
+      {/* LEFT : FAQ */}
+      <div className="text-white pr-0 md:pr-14 md:border-r md:border-white/30">
+        <h3 className="text-2xl font-semibold mb-4">
+          Frequently Asked Questions (FAQs)
+        </h3>
+
+        <p className="text-white/90 leading-relaxed text-[15px] max-w-[520px]">
+          We enjoy educating people on the intricacies of digital marketing.
+          Every day, we receive hundreds of questions from our real customers.
+        </p>
+
+        <a
+          href="/contact"
+          className="mt-8 inline-flex items-center gap-2 text-[15px] font-medium underline underline-offset-4 hover:text-orange-400 transition"
+        >
+          Learn More
+          <span className="text-orange-400 text-lg">↗</span>
+        </a>
+      </div>
+
+      {/* RIGHT : CAREER */}
+      <div className="text-white pl-0 md:pl-14">
+        <h3 className="text-2xl font-semibold mb-4">
+          Wanna Rewarding Career?
+        </h3>
+
+        <p className="text-white/90 leading-relaxed text-[15px] max-w-[520px]">
+          Join our team of experts if you have the urge to show up your potential!
+          We appreciate a proactive measure to make us trust your skills!
+        </p>
+
+        <a
+          href="/careers"
+          className="mt-8 inline-flex items-center gap-2 text-[15px] font-medium underline underline-offset-4 hover:text-orange-400 transition"
+        >
+          Join Our Team
+          <span className="text-orange-400 text-lg">↗</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section className="relative bg-white py-24">
+  <div className="max-w-[1200px] mx-auto px-6">
+
+    <div
+      className="bg-[#0b2f4f] rounded-xl text-center
+                 px-10 md:px-20 py-16
+                 shadow-[0_30px_60px_rgba(0,0,0,0.25)]"
+    >
+      <h2 className="text-white text-2xl md:text-3xl font-semibold mb-6">
+        Looking for The Assistance Of Industry-Best Professionals?
+      </h2>
+
+      <a
+        href="/contact"
+        className="inline-block text-white text-[17px] font-medium
+                   underline underline-offset-4
+                   hover:text-orange-400 transition"
+      >
+        Reach us Online or Schedule An Appointment To A Live Call!
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+
 
       {/* Stats */}
-      <section className="section-padding bg-secondary">
-        <div className="container-custom">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { icon: MousePointer, stat: '150%', label: 'Conversion Increase' },
-              { icon: Target, stat: '2x', label: 'Lead Generation' },
-              { icon: Zap, stat: '40%', label: 'Bounce Rate Reduction' },
-              { icon: LineChart, stat: '200%', label: 'ROI Improvement' },
-            ].map((item, index) => (
-              <div key={index} className="text-center">
-                <item.icon className="w-10 h-10 text-accent mx-auto mb-4" />
-                <div className="text-4xl font-bold text-primary mb-2">{item.stat}</div>
-                <div className="text-muted-foreground">{item.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+     
 
       {/* Contact Form */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
-                Get Your Free CRO Audit
-              </h2>
-              <p className="text-muted-foreground mb-8">
-                Discover hidden opportunities to increase your conversion rates. Our experts will analyze your website and provide actionable recommendations.
-              </p>
-            </div>
-            <div className="bg-card rounded-2xl p-8 shadow-card">
-              <ContactForm />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <CTASection />
+      
     </Layout>
   );
 };

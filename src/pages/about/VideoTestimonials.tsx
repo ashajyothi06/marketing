@@ -1,7 +1,6 @@
 import { Play } from 'lucide-react';
 import Layout from '@/components/layout/Layout';
-import FAQSection from '@/components/shared/FAQSection';
-import CTASection from '@/components/shared/CTASection';
+
 
 const VideoTestimonials = () => {
   const testimonials = [
@@ -34,23 +33,26 @@ const VideoTestimonials = () => {
       </section>
 
       {/* Video Grid */}
-      <section className="section-padding bg-white">
+      
+        <section className="pt-0 pb-24 bg-white">
+
         <div className="container-custom">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
               <div key={index} className="group cursor-pointer">
-                <div className="relative rounded-2xl overflow-hidden mb-4 shadow-card">
-                  <img
-                    src={testimonial.thumbnail}
-                    alt={testimonial.name}
-                    className="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-primary/40 flex items-center justify-center group-hover:bg-primary/60 transition-colors">
-                    <div className="w-16 h-16 rounded-full bg-accent flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <Play className="w-8 h-8 text-accent-foreground fill-current ml-1" />
-                    </div>
-                  </div>
-                </div>
+                <div className="relative rounded-2xl overflow-hidden mb-5 shadow-card h-[260px] md:h-[300px]">
+  <img
+    src={testimonial.thumbnail}
+    alt={testimonial.name}
+    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+  />
+  <div className="absolute inset-0 bg-primary/40 flex items-center justify-center group-hover:bg-primary/60 transition-colors">
+    <div className="w-16 h-16 rounded-full bg-accent flex items-center justify-center group-hover:scale-110 transition-transform">
+      <Play className="w-8 h-8 text-accent-foreground fill-current ml-1" />
+    </div>
+  </div>
+</div>
+
                 <h3 className="text-lg font-bold text-primary">{testimonial.name}</h3>
                 <p className="text-muted-foreground">{testimonial.company}</p>
               </div>
@@ -59,8 +61,80 @@ const VideoTestimonials = () => {
         </div>
       </section>
 
-      <FAQSection faqs={faqs} />
-      <CTASection />
+      <section className="w-full bg-[#0b2f4f] py-16">
+  <div className="max-w-[1320px] mx-auto px-6">
+    <div className="grid md:grid-cols-2 gap-14 relative">
+
+      {/* LEFT : FAQ */}
+      <div className="text-white pr-0 md:pr-14 md:border-r md:border-white/30">
+        <h3 className="text-2xl font-semibold mb-4">
+          Frequently Asked Questions (FAQs)
+        </h3>
+
+        <p className="text-white/90 leading-relaxed text-[15px] max-w-[520px]">
+          We enjoy educating people on the intricacies of digital marketing.
+          Every day, we receive hundreds of questions from our real customers.
+        </p>
+
+        <a
+          href="/contact"
+          className="mt-8 inline-flex items-center gap-2 text-[15px] font-medium underline underline-offset-4 hover:text-orange-400 transition"
+        >
+          Learn More
+          <span className="text-orange-400 text-lg">↗</span>
+        </a>
+      </div>
+
+      {/* RIGHT : CAREER */}
+      <div className="text-white pl-0 md:pl-14">
+        <h3 className="text-2xl font-semibold mb-4">
+          Wanna Rewarding Career?
+        </h3>
+
+        <p className="text-white/90 leading-relaxed text-[15px] max-w-[520px]">
+          Join our team of experts if you have the urge to show up your potential!
+          We appreciate a proactive measure to make us trust your skills!
+        </p>
+
+        <a
+          href="/careers"
+          className="mt-8 inline-flex items-center gap-2 text-[15px] font-medium underline underline-offset-4 hover:text-orange-400 transition"
+        >
+          Join Our Team
+          <span className="text-orange-400 text-lg">↗</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section className="relative bg-white py-24">
+  <div className="max-w-[1200px] mx-auto px-6">
+
+    <div
+      className="bg-[#0b2f4f] rounded-xl text-center
+                 px-10 md:px-20 py-16
+                 shadow-[0_30px_60px_rgba(0,0,0,0.25)]"
+    >
+      <h2 className="text-white text-2xl md:text-3xl font-semibold mb-6">
+        Looking for The Assistance Of Industry-Best Professionals?
+      </h2>
+
+      <a
+        href="/contact"
+        className="inline-block text-white text-[17px] font-medium
+                   underline underline-offset-4
+                   hover:text-orange-400 transition"
+      >
+        Reach us Online or Schedule An Appointment To A Live Call!
+      </a>
+    </div>
+
+  </div>
+</section>
+
+      
     </Layout>
   );
 };

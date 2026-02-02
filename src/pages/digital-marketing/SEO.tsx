@@ -74,13 +74,15 @@ const SEO = () => {
       </div>
 
       {/* RIGHT ILLUSTRATION */}
-      <div className="relative hidden lg:flex justify-end">
-        <img
-          src={seoIllustration}
-          alt="SEO Illustration"
-          className="w-[420px] xl:w-[480px]"
-        />
-      </div>
+      <div className="relative flex justify-center lg:justify-end mt-10 lg:mt-0">
+  <img
+    src={seoIllustration}
+    alt="SEO Illustration"
+    className="w-[280px] sm:w-[340px] md:w-[380px] lg:w-[420px] xl:w-[480px]"
+    draggable={false}
+  />
+</div>
+
 
     </div>
   </div>

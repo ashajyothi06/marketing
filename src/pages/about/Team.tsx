@@ -14,6 +14,8 @@ import partner3 from '@/assets/team-partner-3.jpg';
 import partner4 from '@/assets/team-partner-4.jpg';
 import partner5 from '@/assets/team-partner-5.jpg';
 import partner6 from '@/assets/team-partner-6.jpg';
+import globeImage from '@/assets/globe.png';
+import rajesh from '@/assets/rajesh.png';
 
 const Team = () => {
   const directors = [
@@ -66,62 +68,119 @@ const Team = () => {
   return (
     <Layout>
       {/* Hero Section with World Map */}
-      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${worldMapBg})` }}
-        />
-        <div className="absolute inset-0 bg-primary/80" />
-        <div className="container-custom relative z-10 text-center py-20">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight">
-            Partnering with Businesses<br />across the <span className="text-accent">Globe</span>
-          </h1>
-        </div>
-      </section>
+      <section className="relative min-h-[60vh] overflow-hidden">
+
+  {/* Background image */}
+  <div
+    className="absolute inset-0 bg-cover bg-center"
+    style={{ backgroundImage: `url(${worldMapBg})` }}
+  />
+
+  {/* Dark overlay */}
+  <div className="absolute inset-0 bg-primary/80" />
+
+  {/* CENTERED CONTENT */}
+  <div className="relative z-10 w-full min-h-[60vh] flex items-center justify-center text-center">
+    <div className="container-custom">
+      <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground">
+        Partnering with Businesses <br />
+        across the <span className="text-accent">Globe</span>
+      </h1>
+    </div>
+  </div>
+
+</section>
+
 
       {/* Directors Section */}
-      <section className="section-padding bg-background relative overflow-hidden">
-        {/* Orange wave decoration */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-accent/10 rounded-t-[100%] transform translate-y-16" />
-        
-        <div className="container-custom relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
-              The Masterminds behind the Successful<br />Digital Marketing Outcomes
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Our leadership team combines decades of experience in digital marketing, technology, and business strategy to deliver exceptional results for our clients.
+      <section className="relative bg-white py-24 overflow-hidden">
+
+  {/* HEADING */}
+  <div className="max-w-5xl mx-auto text-center mb-20 px-6">
+    <h2 className="text-3xl md:text-4xl font-semibold mb-4">
+      The Masterminds behind the Successful Digital Marketing Outcomes
+    </h2>
+
+    <p className="text-slate-600 text-sm leading-relaxed max-w-4xl mx-auto">
+      As a top Digital Marketing Agency, we pledge to work with perseverance,
+      honesty and wit to strengthen client relationships. Our expert team
+      delivers innovative strategies across Digital Marketing, SEO, Social Media,
+      Website Design & Development.
+    </p>
+  </div>
+
+  {/* YELLOW WAVE */}
+  <div className="absolute inset-x-0 top-[55%] -z-10">
+    <svg viewBox="0 0 1440 320" className="w-full h-48" preserveAspectRatio="none">
+      <path
+        fill="#FDBA4D"
+        d="M0,192L80,202.7C160,213,320,235,480,224C640,213,800,171,960,149.3C1120,128,1280,128,1360,128L1440,128L1440,320L0,320Z"
+      />
+    </svg>
+  </div>
+
+  {/* TEAM CARDS */}
+  <div className="max-w-4xl mx-auto px-6">
+    <div className="grid md:grid-cols-2 gap-14">
+
+      {/* CARD 1 */}
+      <div className="text-center">
+        <div className="relative group rounded-2xl overflow-hidden shadow-xl">
+          <img
+            src={rajesh}
+            alt="Amlan Maiti"
+            className="w-full h-[420px] object-cover"
+          />
+
+          {/* HOVER CONTENT */}
+          <div className="absolute inset-0 bg-[#0b2f4f]/90 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center px-6">
+            <p className="text-white text-sm leading-relaxed">
+              Amlan Maiti is a strategic digital leader with expertise in SEO,
+              performance marketing, and brand growth, driving innovation
+              with a results-focused approach.
             </p>
           </div>
+        </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {directors.map((director, index) => (
-              <div 
-                key={index} 
-                className={`rounded-2xl overflow-hidden shadow-card transition-transform duration-300 hover:-translate-y-2 ${
-                  director.isHighlighted ? 'bg-accent/10 border-2 border-accent/30' : 'bg-card'
-                }`}
-              >
-                <div className="relative">
-                  <img
-                    src={director.image}
-                    alt={director.name}
-                    className="w-full h-80 object-cover object-top"
-                  />
-                  {director.isHighlighted && (
-                    <div className="absolute inset-0 bg-accent/20" />
-                  )}
-                </div>
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold text-primary mb-1">{director.name}</h3>
-                  <p className="text-accent font-medium mb-4">{director.role}</p>
-                  <p className="text-muted-foreground text-sm">{director.bio}</p>
-                </div>
-              </div>
-            ))}
+        <h4 className="mt-6 text-blue-600 font-semibold">
+          Amlan Maiti
+        </h4>
+        <p className="text-orange-500 text-xs font-semibold uppercase">
+          Founder & Director
+        </p>
+      </div>
+
+      {/* CARD 2 */}
+      <div className="text-center">
+        <div className="relative group rounded-2xl overflow-hidden shadow-xl">
+          <img
+            src={rajesh}
+            alt="Sanjay Dhar"
+            className="w-full h-[420px] object-cover"
+          />
+
+          {/* HOVER CONTENT */}
+          <div className="absolute inset-0 bg-[#0b2f4f]/90 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center px-6">
+            <p className="text-white text-sm leading-relaxed">
+              Sanjay Dhar leads with strong business strategy, client success,
+              and operational excellence to ensure scalable and sustainable growth.
+            </p>
           </div>
         </div>
-      </section>
+
+        <h4 className="mt-6 text-blue-600 font-semibold">
+          Sanjay Dhar
+        </h4>
+        <p className="text-orange-500 text-xs font-semibold uppercase">
+          Founder & Director
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
 
       {/* Advisory Board Section */}
       <section className="section-padding bg-secondary">
@@ -187,138 +246,79 @@ const Team = () => {
           </div>
         </div>
       </section>
+     
+      <section className="w-full bg-[#0b2f4f] py-16">
+  <div className="max-w-[1320px] mx-auto px-6">
+    <div className="grid md:grid-cols-2 gap-14 relative">
 
-      {/* FAQ + Career Strip */}
-      <section className="bg-primary py-16">
-        <div className="container-custom">
-          <div className="grid md:grid-cols-2 gap-8 md:gap-0">
-            {/* FAQ Column */}
-            <div className="md:border-r border-primary-foreground/20 md:pr-12">
-              <h3 className="text-2xl md:text-3xl font-bold text-primary-foreground mb-4">
-                Frequently Asked Questions (FAQs)
-              </h3>
-              <p className="text-primary-foreground/70 mb-6">
-                We enjoy educating people on the intricacies of governed audit execution. Every day, we receive questions from sponsors and audit firms.
-              </p>
-              <Link 
-                to="/faq" 
-                className="inline-flex items-center gap-2 text-accent hover:text-accent/80 font-medium transition-colors"
-              >
-                Learn More <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
+      {/* LEFT : FAQ */}
+      <div className="text-white pr-0 md:pr-14 md:border-r md:border-white/30">
+        <h3 className="text-2xl font-semibold mb-4">
+          Frequently Asked Questions (FAQs)
+        </h3>
 
-            {/* Career Column */}
-            <div className="md:pl-12">
-              <h3 className="text-2xl md:text-3xl font-bold text-primary-foreground mb-4">
-                Wanna Rewarding Career?
-              </h3>
-              <p className="text-primary-foreground/70 mb-6">
-                Join our team of experts if you value disciplined audit judgment and structured execution. We appreciate a proactive mindset and strong ethical independence.
-              </p>
-              <Link 
-                to="/careers" 
-                className="inline-flex items-center gap-2 text-accent hover:text-accent/80 font-medium transition-colors"
-              >
-                Join Our Team <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+        <p className="text-white/90 leading-relaxed text-[15px] max-w-[520px]">
+          We enjoy educating people on the intricacies of digital marketing.
+          Every day, we receive hundreds of questions from our real customers.
+        </p>
 
-      {/* CTA Box */}
-      <section className="section-padding bg-background">
-        <div className="container-custom">
-          <div className="bg-primary rounded-2xl p-8 md:p-12 text-center shadow-lg max-w-4xl mx-auto">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary-foreground mb-4">
-              Looking for The Assistance Of<br />Industry-Best Professionals?
-            </h2>
-            <Link 
-              to="/contact" 
-              className="text-accent hover:text-accent/80 underline underline-offset-4 font-medium text-lg transition-colors"
-            >
-              Reach us Online or Schedule An Appointment To A Live Call!
-            </Link>
-          </div>
-        </div>
-      </section>
+        <a
+          href="/contact"
+          className="mt-8 inline-flex items-center gap-2 text-[15px] font-medium underline underline-offset-4 hover:text-orange-400 transition"
+        >
+          Learn More
+          <span className="text-orange-400 text-lg">↗</span>
+        </a>
+      </div>
 
-      {/* Custom Footer */}
-      <footer className="bg-background border-t border-border shadow-sm">
-        <div className="container-custom py-12">
-          <div className="flex flex-col lg:flex-row items-start justify-between gap-8 pb-8 border-b border-border">
-            {/* Logo & Newsletter */}
-            <div className="flex-1">
-              <Link to="/" className="flex items-center gap-2 mb-6">
-                <div className="w-12 h-12 bg-accent rounded-lg flex items-center justify-center">
-                  <Send className="w-6 h-6 text-accent-foreground" />
-                </div>
-                <span className="text-2xl font-bold text-primary">
-                  digital<span className="text-accent">piloto</span>
-                </span>
-              </Link>
+      {/* RIGHT : CAREER */}
+      <div className="text-white pl-0 md:pl-14">
+        <h3 className="text-2xl font-semibold mb-4">
+          Wanna Rewarding Career?
+        </h3>
 
-              <div className="mb-4">
-                <p className="font-semibold text-primary mb-2">Subscribe To Our Newsletter!</p>
-                <p className="text-sm text-muted-foreground mb-1">Stay updated with audit governance perspectives.</p>
-                <p className="text-sm text-muted-foreground mb-4">Subscribe now for Free!</p>
-              </div>
+        <p className="text-white/90 leading-relaxed text-[15px] max-w-[520px]">
+          Join our team of experts if you have the urge to show up your potential!
+          We appreciate a proactive measure to make us trust your skills!
+        </p>
 
-              <div className="flex max-w-md">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="flex-1 px-4 py-2.5 rounded-l-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent"
-                />
-                <button className="px-6 py-2.5 bg-accent text-accent-foreground rounded-r-lg hover:bg-accent/90 transition-colors font-medium">
-                  Subscribe
-                </button>
-              </div>
+        <a
+          href="/careers"
+          className="mt-8 inline-flex items-center gap-2 text-[15px] font-medium underline underline-offset-4 hover:text-orange-400 transition"
+        >
+          Join Our Team
+          <span className="text-orange-400 text-lg">↗</span>
+        </a>
+      </div>
 
-              <p className="text-xs text-muted-foreground mt-4">
-                CIN: U74999WB2023PTC123456
-              </p>
-            </div>
+    </div>
+  </div>
+</section>
 
-            {/* Links & Social */}
-            <div className="flex-1 lg:text-right">
-              <div className="flex flex-wrap gap-4 lg:justify-end mb-6">
-                {footerLinks.map((link, index) => (
-                  <Link
-                    key={index}
-                    to={link.path}
-                    className="text-sm text-muted-foreground hover:text-accent transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
+<section className="relative bg-white py-24">
+  <div className="max-w-[1200px] mx-auto px-6">
 
-              <div className="flex items-center gap-3 lg:justify-end">
-                {socialLinks.map((social, index) => (
-                  <a
-                    key={index}
-                    href={social.href}
-                    aria-label={social.label}
-                    className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors"
-                  >
-                    <social.icon className="w-5 h-5" />
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
+    <div
+      className="bg-[#0b2f4f] rounded-xl text-center
+                 px-10 md:px-20 py-16
+                 shadow-[0_30px_60px_rgba(0,0,0,0.25)]"
+    >
+      <h2 className="text-white text-2xl md:text-3xl font-semibold mb-6">
+        Looking for The Assistance Of Industry-Best Professionals?
+      </h2>
 
-          {/* Bottom Copyright */}
-          <div className="pt-6 text-center">
-            <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} Digital Piloto. All rights reserved. | 
-              <span className="ml-1">Your trusted partner in digital marketing excellence.</span>
-            </p>
-          </div>
-        </div>
-      </footer>
+      <a
+        href="/contact"
+        className="inline-block text-white text-[17px] font-medium
+                   underline underline-offset-4
+                   hover:text-orange-400 transition"
+      >
+        Reach us Online or Schedule An Appointment To A Live Call!
+      </a>
+    </div>
+
+  </div>
+</section>
     </Layout>
   );
 };
